@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">WeiProduct social preview</title>
+  <desc id="desc">WeiProduct builds focused consumer AI products across daily mobile workflows.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.44" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#f0fdfa"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.78"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-15%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="#0f172a" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="176" cy="118" r="190" fill="#2563eb" opacity="0.13"/>
+  <circle cx="1010" cy="460" r="220" fill="#0f766e" opacity="0.13"/>
+  <path d="M0 490 C175 430 270 565 438 502 C600 440 710 382 905 432 C1048 469 1126 402 1200 362 L1200 630 L0 630 Z" fill="#dbeafe" opacity="0.58"/>
+
+  <g opacity="0.58">
+    <rect x="812" y="68" width="104" height="104" rx="25" fill="#2563eb"/>
+    <text x="864" y="134" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="32" font-weight="800" fill="#ffffff">AI</text>
+    <rect x="942" y="106" width="104" height="104" rx="25" fill="#0f766e"/>
+    <text x="994" y="172" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="27" font-weight="800" fill="#ffffff">CAL</text>
+    <rect x="762" y="448" width="104" height="104" rx="25" fill="#7c3aed"/>
+    <text x="814" y="514" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="27" font-weight="800" fill="#ffffff">17</text>
+    <rect x="904" y="400" width="104" height="104" rx="25" fill="#f97316"/>
+    <text x="956" y="466" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="27" font-weight="800" fill="#ffffff">$</text>
+  </g>
+
+  <rect x="76" y="78" width="736" height="474" rx="34" fill="url(#card)" filter="url(#shadow)"/>
+  <rect x="124" y="122" width="64" height="64" rx="16" fill="#0f172a"/>
+  <text x="156" y="165" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="31" font-weight="850" fill="#ffffff">W</text>
+  <text x="210" y="162" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="34" font-weight="850" fill="#0f172a">WeiProduct</text>
+  <text x="124" y="260" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="70" font-weight="850" fill="#0f172a">Consumer AI utility layer</text>
+  <text x="124" y="330" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="32" font-weight="550" fill="#475569">Focused mobile products for repeated daily workflows.</text>
+  <text x="124" y="408" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24" font-weight="760" fill="#2563eb">17 products</text>
+  <text x="292" y="408" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24" font-weight="760" fill="#0f766e">5 workflow categories</text>
+  <text x="564" y="408" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24" font-weight="760" fill="#7c3aed">CS + Econ founder</text>
+  <text x="124" y="486" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" font-weight="650" fill="#64748b">weiproduct.com</text>
+</svg>

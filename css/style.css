@@ -323,6 +323,8 @@ section {
     font-size: clamp(3.2rem, 7vw, 6.8rem);
     line-height: 0.94;
     letter-spacing: 0;
+    overflow-wrap: normal;
+    text-wrap: balance;
 }
 
 .hero-description {
@@ -355,6 +357,71 @@ section {
 
 .btn:hover {
     transform: translateY(-2px);
+}
+
+.ui-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 1.35rem;
+    height: 1.35rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-size: 0.68rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.ui-icon::before {
+    color: currentColor;
+}
+
+.btn-primary .ui-icon {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+}
+
+.btn-secondary .ui-icon,
+.focus-grid .ui-icon,
+.contact-method .ui-icon {
+    background: #eff6ff;
+    color: var(--blue);
+}
+
+.icon-layers::before {
+    content: "17";
+}
+
+.icon-founder::before {
+    content: "WF";
+}
+
+.icon-bolt::before {
+    content: "01";
+}
+
+.icon-phone::before {
+    content: "02";
+}
+
+.icon-ai::before {
+    content: "AI";
+}
+
+.icon-compound::before {
+    content: "04";
+}
+
+.icon-mail::before {
+    content: "@";
+}
+
+.icon-github::before {
+    content: "GH";
+}
+
+.icon-linkedin::before {
+    content: "in";
 }
 
 .btn-primary {
@@ -649,6 +716,9 @@ section {
 }
 
 .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     min-height: 38px;
     border: 1px solid var(--line);
     border-radius: 999px;
@@ -669,6 +739,24 @@ section {
 .filter-chip.active {
     border-color: var(--ink);
     background: var(--ink);
+    color: #ffffff;
+}
+
+.filter-count {
+    display: inline-flex;
+    min-width: 1.45rem;
+    min-height: 1.45rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.76rem;
+    font-weight: 850;
+}
+
+.filter-chip.active .filter-count {
+    background: rgba(255, 255, 255, 0.16);
     color: #ffffff;
 }
 
@@ -726,9 +814,10 @@ section {
     background: #ffffff;
 }
 
-.focus-grid i {
-    color: var(--blue);
-    font-size: 1.5rem;
+.focus-grid .ui-icon {
+    width: 2.1rem;
+    height: 2.1rem;
+    font-size: 0.76rem;
 }
 
 .studio {
@@ -794,9 +883,15 @@ section {
     align-items: center;
     gap: 12px;
     min-height: 48px;
+    min-width: 0;
     color: var(--ink);
     text-decoration: none;
     font-weight: 700;
+}
+
+.contact-method span:last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .contact-method + .contact-method {
@@ -805,10 +900,9 @@ section {
     padding-top: 10px;
 }
 
-.contact-method i {
-    color: var(--blue);
-    width: 22px;
-    text-align: center;
+.contact-method .ui-icon {
+    width: 2rem;
+    height: 2rem;
 }
 
 .footer {
@@ -954,7 +1048,8 @@ section {
     }
 
     .hero h1 {
-        font-size: clamp(3rem, 16vw, 4.8rem);
+        font-size: clamp(2.7rem, 12vw, 3.7rem);
+        line-height: 1;
     }
 
     .hero-metrics {
@@ -1014,5 +1109,15 @@ section {
     .footer-layout {
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero h1 {
+        font-size: clamp(2.45rem, 11vw, 3rem);
+    }
+
+    .hero-description {
+        font-size: 1rem;
     }
 }

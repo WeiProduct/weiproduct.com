@@ -6,21 +6,21 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="description" content="WeiProduct is a founder-led AI consumer product studio building focused mobile apps for daily workflows across productivity, finance, learning, wellness, and utility.">
     <meta name="robots" content="index, follow">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <meta property="og:title" content="WeiProduct | AI Consumer Product Studio">
     <meta property="og:description" content="Founder-led AI consumer products, shipped fast and refined through a portfolio of focused mobile workflows.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://weiproduct.com/">
-    <meta property="og:image" content="https://weiproduct.com/assets/icons/ai-voice-notes.png">
+    <meta property="og:image" content="https://weiproduct.com/assets/brand/social-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="WeiProduct | AI Consumer Product Studio">
     <meta name="twitter:description" content="AI consumer products for daily workflows, built by a fast-moving CS and economics founder.">
-    <meta name="twitter:image" content="https://weiproduct.com/assets/icons/ai-voice-notes.png">
+    <meta name="twitter:image" content="https://weiproduct.com/assets/brand/social-card.png">
 
     <title>WeiProduct | AI Consumer Product Studio</title>
-    <link rel="preload" href="css/style.css?v=20260514-ambient-vivid-plus" as="style">
-    <link rel="stylesheet" href="css/style.css?v=20260514-ambient-vivid-plus">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="css/style.css?v=20260514-site-system" as="style">
+    <link rel="stylesheet" href="css/style.css?v=20260514-site-system">
     <link rel="canonical" href="https://weiproduct.com/">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="assets/icons/ai-voice-notes@2x.png" sizes="180x180">
@@ -193,11 +193,11 @@
                     </p>
                     <div class="hero-actions">
                         <a href="#products" class="btn btn-primary">
-                            <i aria-hidden="true" class="fas fa-layer-group"></i>
+                            <span aria-hidden="true" class="ui-icon icon-layers"></span>
                             See product velocity
                         </a>
                         <a href="#founder" class="btn btn-secondary">
-                            <i aria-hidden="true" class="fas fa-user-astronaut"></i>
+                            <span aria-hidden="true" class="ui-icon icon-founder"></span>
                             Founder edge
                         </a>
                     </div>
@@ -265,55 +265,13 @@
                     </p>
                 </div>
 
-                <div class="featured-grid">
-                    <article class="featured-product">
-                        <img src="assets/icons/piggyfinance.png" alt="Piggy Accounting icon" width="120" height="120" decoding="async">
-                        <div>
-                            <span class="category finance">Finance</span>
-                            <h3>Piggy Accounting</h3>
-                            <p>Personal finance tracking designed to make spending visible and easier to manage.</p>
-                            <div class="product-links">
-                                <a href="https://weiproduct.github.io/piggy-finance/" target="_blank" rel="noopener noreferrer">Product site</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="featured-product">
-                        <img src="assets/icons/ai-voice-notes.png" alt="AI Voice Notes icon" width="120" height="120" decoding="async">
-                        <div>
-                            <span class="category productivity">Productivity</span>
-                            <h3>AI Voice Notes</h3>
-                            <p>Capture spoken ideas and turn them into usable notes for work, study, and daily planning.</p>
-                            <div class="product-links">
-                                <a href="https://weiproduct.github.io/recording/" target="_blank" rel="noopener noreferrer">Product site</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="featured-product">
-                        <img src="assets/icons/ai-calendar.png" alt="AI Calendar icon" width="120" height="120" decoding="async">
-                        <div>
-                            <span class="category productivity">Planning</span>
-                            <h3>AI Calendar</h3>
-                            <p>A calendar experience built around faster planning and clearer daily structure.</p>
-                            <div class="product-links">
-                                <a href="https://weiproduct.github.io/AICalendar/" target="_blank" rel="noopener noreferrer">Product site</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+                <div class="featured-grid" id="featuredGrid" aria-label="Featured products"></div>
 
                 <div class="portfolio-toolbar">
                     <h3>All products</h3>
                     <p><span id="productCount">17 products</span> grouped by workflow so investors can scan the portfolio logic quickly.</p>
                 </div>
-                <div class="product-filters" aria-label="Filter product categories">
-                    <button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">All</button>
-                    <button class="filter-chip" type="button" data-filter="productivity" aria-pressed="false">Productivity</button>
-                    <button class="filter-chip" type="button" data-filter="wellness" aria-pressed="false">Wellness</button>
-                    <button class="filter-chip" type="button" data-filter="utility" aria-pressed="false">Utility</button>
-                    <button class="filter-chip" type="button" data-filter="learning" aria-pressed="false">Learning</button>
-                    <button class="filter-chip" type="button" data-filter="lifestyle" aria-pressed="false">Lifestyle</button>
-                    <button class="filter-chip" type="button" data-filter="finance" aria-pressed="false">Finance</button>
-                </div>
+                <div class="product-filters" id="productFilters" aria-label="Filter product categories"></div>
                 <div class="product-grid" id="productGrid" aria-live="polite"></div>
                 <noscript>
                     <p class="product-fallback">Enable JavaScript to browse the full WeiProduct portfolio. Featured products remain available above.</p>
@@ -329,22 +287,22 @@
                 </div>
                 <div class="focus-grid">
                     <article>
-                        <i aria-hidden="true" class="fas fa-bolt"></i>
+                        <span aria-hidden="true" class="ui-icon icon-bolt"></span>
                         <h3>Ship narrow</h3>
                         <p>Each product starts with one clear job so users can understand the value quickly.</p>
                     </article>
                     <article>
-                        <i aria-hidden="true" class="fas fa-mobile-screen-button"></i>
+                        <span aria-hidden="true" class="ui-icon icon-phone"></span>
                         <h3>Design for moments</h3>
                         <p>The portfolio is built around phone-native moments: quick capture, quick review, and quick action.</p>
                     </article>
                     <article>
-                        <i aria-hidden="true" class="fas fa-brain"></i>
+                        <span aria-hidden="true" class="ui-icon icon-ai"></span>
                         <h3>Use AI as leverage</h3>
                         <p>AI is used to reduce friction, summarize, suggest, and personalize rather than make the product feel heavier.</p>
                     </article>
                     <article>
-                        <i aria-hidden="true" class="fas fa-shield-alt"></i>
+                        <span aria-hidden="true" class="ui-icon icon-compound"></span>
                         <h3>Compound what works</h3>
                         <p>Reusable support pages, app patterns, and category learnings make every new product cheaper to test.</p>
                     </article>
@@ -390,15 +348,15 @@
                 </div>
                 <div class="contact-card">
                     <a href="mailto:1597498880weiproduct@gmail.com" class="contact-method">
-                        <i aria-hidden="true" class="fas fa-envelope"></i>
+                        <span aria-hidden="true" class="ui-icon icon-mail"></span>
                         <span>1597498880weiproduct@gmail.com</span>
                     </a>
                     <a href="https://github.com/WeiProduct" target="_blank" rel="noopener noreferrer" class="contact-method">
-                        <i aria-hidden="true" class="fab fa-github"></i>
+                        <span aria-hidden="true" class="ui-icon icon-github"></span>
                         <span>GitHub</span>
                     </a>
                     <a href="https://www.linkedin.com/in/wei-fu-004724256/" target="_blank" rel="noopener noreferrer" class="contact-method">
-                        <i aria-hidden="true" class="fab fa-linkedin"></i>
+                        <span aria-hidden="true" class="ui-icon icon-linkedin"></span>
                         <span>LinkedIn</span>
                     </a>
                 </div>
@@ -415,7 +373,146 @@
             <p>&copy; <span id="currentYear">2026</span> WeiProduct. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="js/main.js?v=20260514-file-preview" defer></script>
+    <script type="application/json" id="productData">
+    [
+      {
+        "name": "Piggy Accounting",
+        "category": "Finance",
+        "group": "finance",
+        "icon": "assets/icons/piggyfinance.png",
+        "description": "Expense tracking and personal accounting for clearer money habits.",
+        "url": "https://weiproduct.github.io/piggy-finance/"
+      },
+      {
+        "name": "AI Calendar",
+        "category": "Planning",
+        "group": "productivity",
+        "icon": "assets/icons/ai-calendar.png",
+        "description": "Daily scheduling and planning with an AI-first workflow.",
+        "url": "https://weiproduct.github.io/AICalendar/"
+      },
+      {
+        "name": "Habits",
+        "category": "Habits",
+        "group": "wellness",
+        "icon": "assets/icons/weirabits.png",
+        "description": "Habit formation support for routines that need simple, consistent tracking.",
+        "url": "https://weiproduct.github.io/WeiRabits/docs/index.html"
+      },
+      {
+        "name": "AI Weather",
+        "category": "Utility",
+        "group": "utility",
+        "icon": "assets/icons/weatherspro.png",
+        "description": "Weather information packaged for fast everyday decisions.",
+        "url": "https://weiproduct.github.io/Weather/"
+      },
+      {
+        "name": "AI Pomodoro Timer",
+        "category": "Focus",
+        "group": "productivity",
+        "icon": "assets/icons/ai-tomato-clock.png",
+        "description": "Timeboxing and focus sessions for work, study, and personal routines.",
+        "url": "https://weiproduct.github.io/AITomatoClock/"
+      },
+      {
+        "name": "AI Vocabulary",
+        "category": "Learning",
+        "group": "learning",
+        "icon": "assets/icons/ai-vocabulary.png",
+        "description": "Vocabulary practice for learners who want lightweight daily study.",
+        "url": "https://weiproduct.github.io/aiwordslearning/"
+      },
+      {
+        "name": "Food Calories",
+        "category": "Health",
+        "group": "wellness",
+        "icon": "assets/icons/ai-calories.png",
+        "description": "Food and calorie awareness for simpler nutrition tracking.",
+        "url": "https://weiproduct.github.io/AICaloriesSupport-/"
+      },
+      {
+        "name": "Dating Chat",
+        "category": "Lifestyle",
+        "group": "lifestyle",
+        "icon": "assets/icons/ai-helper.png",
+        "description": "Conversation support for people who want clearer, more confident messaging.",
+        "url": "https://weiproduct.github.io/aidatingchat2/"
+      },
+      {
+        "name": "AI Platform",
+        "category": "AI Utility",
+        "group": "utility",
+        "icon": "assets/icons/ai-platform.png",
+        "description": "A compact mobile interface for accessing AI assistance in one place.",
+        "url": "https://weiproduct.github.io/ai-platform-support/"
+      },
+      {
+        "name": "AI Smart Light",
+        "category": "Camera",
+        "group": "utility",
+        "icon": "assets/icons/smart-light-master.png",
+        "description": "Lighting support for content, calls, photos, and quick visual setup.",
+        "url": "https://weiproduct.github.io/AISmartlight/"
+      },
+      {
+        "name": "Meditation",
+        "category": "Wellness",
+        "group": "wellness",
+        "icon": "assets/icons/ai-meditation.png",
+        "description": "Guided calm and reflection moments built for a mobile daily routine.",
+        "url": "https://weiproduct.github.io/AIMeditation/"
+      },
+      {
+        "name": "Dailymatters",
+        "category": "Journal",
+        "group": "productivity",
+        "icon": "assets/icons/dailymatters.png",
+        "description": "Daily tracking for thoughts, moments, and personal organization.",
+        "url": "https://weiproduct.github.io/dailymatters/"
+      },
+      {
+        "name": "AI Daily Matters",
+        "category": "Journal",
+        "group": "productivity",
+        "icon": "assets/icons/aidailymatters.png",
+        "description": "An AI-supported companion for capturing and organizing daily matters.",
+        "url": "https://weiproduct.github.io/AIDailyMatters/"
+      },
+      {
+        "name": "AIMBTI",
+        "category": "Personality",
+        "group": "lifestyle",
+        "icon": "assets/icons/aimbti.png",
+        "description": "Personality reflection and AI-assisted self-understanding.",
+        "url": "https://weiproduct.github.io/MBTI/"
+      },
+      {
+        "name": "AI Drink Water",
+        "category": "Health",
+        "group": "wellness",
+        "icon": "assets/icons/aidrinkwater.png",
+        "description": "Hydration reminders and simple wellness habit support.",
+        "url": "https://weiproduct.github.io/Drinking/"
+      },
+      {
+        "name": "AI Note",
+        "category": "Notes",
+        "group": "productivity",
+        "icon": "assets/icons/ainote.png",
+        "description": "Note capture and organization for ideas that need to become useful.",
+        "url": "https://weiproduct.github.io/notes/"
+      },
+      {
+        "name": "AI Voice Notes",
+        "category": "Voice",
+        "group": "productivity",
+        "icon": "assets/icons/ai-voice-notes.png",
+        "description": "Voice capture for meetings, study, quick thoughts, and personal notes.",
+        "url": "https://weiproduct.github.io/recording/"
+      }
+    ]
+    </script>
+    <script src="js/main.js?v=20260514-site-system" defer></script>
 </body>
 </html>

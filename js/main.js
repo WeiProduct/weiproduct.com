@@ -1,266 +1,25 @@
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
-
-if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!expanded));
-    });
-}
-
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        if (navMenu) {
-            navMenu.classList.remove('active');
-        }
-        if (navToggle) {
-            navToggle.setAttribute('aria-expanded', 'false');
-        }
-    });
-});
-
-document.querySelectorAll('a[target="_blank"]').forEach(link => {
-    const rel = new Set((link.rel || '').split(/\s+/).filter(Boolean));
-    rel.add('noopener');
-    rel.add('noreferrer');
-    link.rel = Array.from(rel).join(' ');
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', event => {
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (!target) {
-            return;
-        }
-
-        event.preventDefault();
-        target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    });
-});
-
-const year = document.getElementById('currentYear');
-if (year) {
-    year.textContent = new Date().getFullYear();
-}
-
+const featuredGrid = document.getElementById('featuredGrid');
+const productFilters = document.getElementById('productFilters');
 const productGrid = document.getElementById('productGrid');
 const productCount = document.getElementById('productCount');
 const siteAppBackground = document.getElementById('siteAppBackground');
-const filterButtons = Array.from(document.querySelectorAll('.filter-chip'));
+
+let filterButtons = [];
 let productCards = [];
 
-const fallbackProducts = [
-    {
-        name: 'Piggy Accounting',
-        category: 'Finance',
-        group: 'finance',
-        icon: 'assets/icons/piggyfinance.png',
-        description: 'Expense tracking and personal accounting for clearer money habits.',
-        url: 'https://weiproduct.github.io/piggy-finance/'
-    },
-    {
-        name: 'AI Calendar',
-        category: 'Planning',
-        group: 'productivity',
-        icon: 'assets/icons/ai-calendar.png',
-        description: 'Daily scheduling and planning with an AI-first workflow.',
-        url: 'https://weiproduct.github.io/AICalendar/'
-    },
-    {
-        name: 'Habits',
-        category: 'Habits',
-        group: 'wellness',
-        icon: 'assets/icons/weirabits.png',
-        description: 'Habit formation support for routines that need simple, consistent tracking.',
-        url: 'https://weiproduct.github.io/WeiRabits/docs/index.html'
-    },
-    {
-        name: 'AI Weather',
-        category: 'Utility',
-        group: 'utility',
-        icon: 'assets/icons/weatherspro.png',
-        description: 'Weather information packaged for fast everyday decisions.',
-        url: 'https://weiproduct.github.io/Weather/'
-    },
-    {
-        name: 'AI Pomodoro Timer',
-        category: 'Focus',
-        group: 'productivity',
-        icon: 'assets/icons/ai-tomato-clock.png',
-        description: 'Timeboxing and focus sessions for work, study, and personal routines.',
-        url: 'https://weiproduct.github.io/AITomatoClock/'
-    },
-    {
-        name: 'AI Vocabulary',
-        category: 'Learning',
-        group: 'learning',
-        icon: 'assets/icons/ai-vocabulary.png',
-        description: 'Vocabulary practice for learners who want lightweight daily study.',
-        url: 'https://weiproduct.github.io/aiwordslearning/'
-    },
-    {
-        name: 'Food Calories',
-        category: 'Health',
-        group: 'wellness',
-        icon: 'assets/icons/ai-calories.png',
-        description: 'Food and calorie awareness for simpler nutrition tracking.',
-        url: 'https://weiproduct.github.io/AICaloriesSupport-/'
-    },
-    {
-        name: 'Dating Chat',
-        category: 'Lifestyle',
-        group: 'lifestyle',
-        icon: 'assets/icons/ai-helper.png',
-        description: 'Conversation support for people who want clearer, more confident messaging.',
-        url: 'https://weiproduct.github.io/aidatingchat2/'
-    },
-    {
-        name: 'AI Platform',
-        category: 'AI Utility',
-        group: 'utility',
-        icon: 'assets/icons/ai-platform.png',
-        description: 'A compact mobile interface for accessing AI assistance in one place.',
-        url: 'https://weiproduct.github.io/ai-platform-support/'
-    },
-    {
-        name: 'AI Smart Light',
-        category: 'Camera',
-        group: 'utility',
-        icon: 'assets/icons/smart-light-master.png',
-        description: 'Lighting support for content, calls, photos, and quick visual setup.',
-        url: 'https://weiproduct.github.io/AISmartlight/'
-    },
-    {
-        name: 'Meditation',
-        category: 'Wellness',
-        group: 'wellness',
-        icon: 'assets/icons/ai-meditation.png',
-        description: 'Guided calm and reflection moments built for a mobile daily routine.',
-        url: 'https://weiproduct.github.io/AIMeditation/'
-    },
-    {
-        name: 'Dailymatters',
-        category: 'Journal',
-        group: 'productivity',
-        icon: 'assets/icons/dailymatters.png',
-        description: 'Daily tracking for thoughts, moments, and personal organization.',
-        url: 'https://weiproduct.github.io/dailymatters/'
-    },
-    {
-        name: 'AI Daily Matters',
-        category: 'Journal',
-        group: 'productivity',
-        icon: 'assets/icons/aidailymatters.png',
-        description: 'An AI-supported companion for capturing and organizing daily matters.',
-        url: 'https://weiproduct.github.io/AIDailyMatters/'
-    },
-    {
-        name: 'AIMBTI',
-        category: 'Personality',
-        group: 'lifestyle',
-        icon: 'assets/icons/aimbti.png',
-        description: 'Personality reflection and AI-assisted self-understanding.',
-        url: 'https://weiproduct.github.io/MBTI/'
-    },
-    {
-        name: 'AI Drink Water',
-        category: 'Health',
-        group: 'wellness',
-        icon: 'assets/icons/aidrinkwater.png',
-        description: 'Hydration reminders and simple wellness habit support.',
-        url: 'https://weiproduct.github.io/Drinking/'
-    },
-    {
-        name: 'AI Note',
-        category: 'Notes',
-        group: 'productivity',
-        icon: 'assets/icons/ainote.png',
-        description: 'Note capture and organization for ideas that need to become useful.',
-        url: 'https://weiproduct.github.io/notes/'
-    },
-    {
-        name: 'AI Voice Notes',
-        category: 'Voice',
-        group: 'productivity',
-        icon: 'assets/icons/ai-voice-notes.png',
-        description: 'Voice capture for meetings, study, quick thoughts, and personal notes.',
-        url: 'https://weiproduct.github.io/recording/'
-    }
-];
-
-function updateProductFilter(filter) {
-    let visibleCount = 0;
-
-    productCards.forEach(card => {
-        const isVisible = filter === 'all' || card.dataset.group === filter;
-        card.hidden = !isVisible;
-        if (isVisible) {
-            visibleCount += 1;
-        }
-    });
-
-    filterButtons.forEach(button => {
-        const isActive = button.dataset.filter === filter;
-        button.classList.toggle('active', isActive);
-        button.setAttribute('aria-pressed', String(isActive));
-    });
-
-    if (productCount) {
-        productCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'product' : 'products'}`;
-    }
-}
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        updateProductFilter(button.dataset.filter || 'all');
-    });
-});
-
-function getCategoryClass(group) {
-    const allowed = new Set(['finance', 'productivity', 'wellness', 'utility', 'learning', 'lifestyle']);
-    return allowed.has(group) ? group : 'utility';
-}
-
-function createProductCard(product) {
-    const card = document.createElement('article');
-    card.className = 'product-card';
-    card.dataset.group = product.group;
-
-    const image = document.createElement('img');
-    image.src = product.icon;
-    image.alt = `${product.name} icon`;
-    image.width = 120;
-    image.height = 120;
-    image.decoding = 'async';
-    image.loading = 'lazy';
-
-    const category = document.createElement('span');
-    category.className = `category ${getCategoryClass(product.group)}`;
-    category.textContent = product.category;
-
-    const title = document.createElement('h3');
-    title.textContent = product.name;
-
-    const description = document.createElement('p');
-    description.textContent = product.description;
-
-    const links = document.createElement('div');
-    links.className = 'product-links';
-
-    const link = document.createElement('a');
-    link.href = product.url;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = 'Website';
-    links.append(link);
-
-    card.append(image, category, title, description, links);
-    return card;
-}
+const featuredProductNames = ['Piggy Accounting', 'AI Voice Notes', 'AI Calendar'];
+const categoryOrder = ['productivity', 'wellness', 'utility', 'learning', 'lifestyle', 'finance'];
+const categoryLabels = new Map([
+    ['productivity', 'Productivity'],
+    ['wellness', 'Wellness'],
+    ['utility', 'Utility'],
+    ['learning', 'Learning'],
+    ['lifestyle', 'Lifestyle'],
+    ['finance', 'Finance']
+]);
 
 const ambientRows = [
     {
@@ -289,6 +48,301 @@ const ambientRows = [
     }
 ];
 
+function closeNavigation() {
+    if (navMenu) {
+        navMenu.classList.remove('active');
+    }
+
+    if (navToggle) {
+        navToggle.setAttribute('aria-expanded', 'false');
+    }
+}
+
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', event => {
+        if (!navMenu.classList.contains('active')) {
+            return;
+        }
+
+        const target = event.target;
+        if (target instanceof Node && !navMenu.contains(target) && !navToggle.contains(target)) {
+            closeNavigation();
+        }
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            closeNavigation();
+            navToggle.focus();
+        }
+    });
+}
+
+function getHashTarget(href) {
+    if (!href || href.length <= 1 || !href.startsWith('#')) {
+        return null;
+    }
+
+    return document.getElementById(href.slice(1));
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', event => {
+        const href = anchor.getAttribute('href');
+        const target = getHashTarget(href);
+
+        if (!target) {
+            return;
+        }
+
+        event.preventDefault();
+        closeNavigation();
+        target.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'start'
+        });
+
+        if (!target.hasAttribute('tabindex')) {
+            target.setAttribute('tabindex', '-1');
+        }
+
+        target.focus({ preventScroll: true });
+        if (window.location.hash !== href) {
+            history.pushState(null, '', href);
+        }
+    });
+});
+
+function secureExternalLinks(root = document) {
+    root.querySelectorAll('a[target="_blank"]').forEach(link => {
+        const rel = new Set((link.rel || '').split(/\s+/).filter(Boolean));
+        rel.add('noopener');
+        rel.add('noreferrer');
+        link.rel = Array.from(rel).join(' ');
+    });
+}
+
+secureExternalLinks();
+
+const year = document.getElementById('currentYear');
+if (year) {
+    year.textContent = new Date().getFullYear();
+}
+
+function parseEmbeddedProducts() {
+    const embeddedProducts = document.getElementById('productData');
+    if (!embeddedProducts || !embeddedProducts.textContent) {
+        return [];
+    }
+
+    try {
+        const parsed = JSON.parse(embeddedProducts.textContent);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function normalizeProducts(products) {
+    return products
+        .filter(product => product && product.name && product.icon && product.url)
+        .map(product => ({
+            name: product.name,
+            category: product.category || 'Utility',
+            group: product.group || 'utility',
+            icon: product.icon,
+            description: product.description || '',
+            url: product.url
+        }));
+}
+
+async function loadProducts() {
+    const embeddedProducts = normalizeProducts(parseEmbeddedProducts());
+
+    if (window.location.protocol === 'file:' && embeddedProducts.length) {
+        return embeddedProducts;
+    }
+
+    try {
+        const response = await fetch('products.json');
+        if (!response.ok) {
+            throw new Error('Product data unavailable');
+        }
+
+        const products = await response.json();
+        const normalizedProducts = normalizeProducts(products);
+        if (normalizedProducts.length) {
+            return normalizedProducts;
+        }
+    } catch (error) {
+        if (embeddedProducts.length) {
+            return embeddedProducts;
+        }
+    }
+
+    throw new Error('Product data unavailable');
+}
+
+function getCategoryClass(group) {
+    return categoryLabels.has(group) ? group : 'utility';
+}
+
+function createIconImage(product, size = 120, lazy = true) {
+    const image = document.createElement('img');
+    image.src = product.icon;
+    image.alt = `${product.name} icon`;
+    image.width = size;
+    image.height = size;
+    image.decoding = 'async';
+
+    if (lazy) {
+        image.loading = 'lazy';
+    }
+
+    return image;
+}
+
+function createProductLink(product, label = 'Product site') {
+    const link = document.createElement('a');
+    link.href = product.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = label;
+    link.setAttribute('aria-label', `Open ${product.name} product site`);
+    return link;
+}
+
+function createCategoryBadge(product) {
+    const category = document.createElement('span');
+    category.className = `category ${getCategoryClass(product.group)}`;
+    category.textContent = product.category;
+    return category;
+}
+
+function createFeaturedProductCard(product) {
+    const card = document.createElement('article');
+    card.className = 'featured-product';
+
+    const content = document.createElement('div');
+    const title = document.createElement('h3');
+    const description = document.createElement('p');
+    const links = document.createElement('div');
+
+    title.textContent = product.name;
+    description.textContent = product.description;
+    links.className = 'product-links';
+    links.append(createProductLink(product));
+
+    content.append(createCategoryBadge(product), title, description, links);
+    card.append(createIconImage(product, 120, false), content);
+    return card;
+}
+
+function renderFeaturedProducts(products) {
+    if (!featuredGrid) {
+        return;
+    }
+
+    const productsByName = new Map(products.map(product => [product.name, product]));
+    const featuredProducts = featuredProductNames
+        .map(name => productsByName.get(name))
+        .filter(Boolean);
+
+    featuredGrid.replaceChildren(...featuredProducts.map(createFeaturedProductCard));
+}
+
+function createProductCard(product) {
+    const card = document.createElement('article');
+    card.className = 'product-card';
+    card.dataset.group = product.group;
+
+    const title = document.createElement('h3');
+    const description = document.createElement('p');
+    const links = document.createElement('div');
+
+    title.textContent = product.name;
+    description.textContent = product.description;
+    links.className = 'product-links';
+    links.append(createProductLink(product, 'Website'));
+
+    card.append(createIconImage(product), createCategoryBadge(product), title, description, links);
+    return card;
+}
+
+function createFilterButton(filter, label, count) {
+    const button = document.createElement('button');
+    const labelText = document.createElement('span');
+    const countText = document.createElement('span');
+
+    button.className = 'filter-chip';
+    button.type = 'button';
+    button.dataset.filter = filter;
+    button.setAttribute('aria-pressed', 'false');
+
+    labelText.textContent = label;
+    countText.className = 'filter-count';
+    countText.textContent = String(count);
+
+    button.append(labelText, countText);
+    button.addEventListener('click', () => {
+        updateProductFilter(filter);
+    });
+
+    return button;
+}
+
+function renderFilters(products) {
+    if (!productFilters) {
+        return;
+    }
+
+    const groupCounts = products.reduce((counts, product) => {
+        counts.set(product.group, (counts.get(product.group) || 0) + 1);
+        return counts;
+    }, new Map());
+
+    const sortedGroups = Array.from(groupCounts.keys()).sort((first, second) => {
+        const firstIndex = categoryOrder.indexOf(first);
+        const secondIndex = categoryOrder.indexOf(second);
+        return (firstIndex === -1 ? 99 : firstIndex) - (secondIndex === -1 ? 99 : secondIndex);
+    });
+
+    const buttons = [
+        createFilterButton('all', 'All', products.length),
+        ...sortedGroups.map(group => createFilterButton(group, categoryLabels.get(group) || group, groupCounts.get(group)))
+    ];
+
+    productFilters.replaceChildren(...buttons);
+    filterButtons = buttons;
+}
+
+function updateProductFilter(filter) {
+    let visibleCount = 0;
+
+    productCards.forEach(card => {
+        const isVisible = filter === 'all' || card.dataset.group === filter;
+        card.hidden = !isVisible;
+        if (isVisible) {
+            visibleCount += 1;
+        }
+    });
+
+    filterButtons.forEach(button => {
+        const isActive = button.dataset.filter === filter;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+    });
+
+    if (productCount) {
+        productCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'product' : 'products'}`;
+    }
+}
+
 function createAmbientIcon(product) {
     const image = document.createElement('img');
     image.className = 'ambient-icon';
@@ -314,37 +368,43 @@ function renderAmbientBackground(products) {
     }
 
     const productsByName = new Map(products.map(product => [product.name, product]));
-    const rows = ambientRows.map(rowConfig => {
-        const rowProducts = rowConfig.products
-            .map(name => productsByName.get(name))
-            .filter(Boolean);
+    const rows = ambientRows
+        .map(rowConfig => {
+            const rowProducts = rowConfig.products
+                .map(name => productsByName.get(name))
+                .filter(Boolean);
 
-        const row = document.createElement('div');
-        row.className = 'ambient-row';
-        row.style.setProperty('--duration', rowConfig.duration);
-        row.style.setProperty('--offset', rowConfig.offset);
-        row.style.setProperty('--row-top', rowConfig.top);
+            if (!rowProducts.length) {
+                return null;
+            }
 
-        const track = document.createElement('div');
-        track.className = 'ambient-track';
-        track.append(createAmbientGroup(rowProducts), createAmbientGroup(rowProducts));
-        row.append(track);
-        return row;
-    });
+            const row = document.createElement('div');
+            const track = document.createElement('div');
+
+            row.className = 'ambient-row';
+            row.style.setProperty('--duration', rowConfig.duration);
+            row.style.setProperty('--offset', rowConfig.offset);
+            row.style.setProperty('--row-top', rowConfig.top);
+
+            track.className = 'ambient-track';
+            track.append(createAmbientGroup(rowProducts), createAmbientGroup(rowProducts));
+            row.append(track);
+            return row;
+        })
+        .filter(Boolean);
 
     siteAppBackground.replaceChildren(...rows);
 }
 
-async function loadProducts() {
-    try {
-        const response = await fetch('products.json', { cache: 'no-store' });
-        if (!response.ok) {
-            throw new Error('Product data unavailable');
-        }
-        return response.json();
-    } catch (error) {
-        return fallbackProducts;
+function renderProductError() {
+    if (!productGrid) {
+        return;
     }
+
+    const message = document.createElement('p');
+    message.className = 'product-fallback';
+    message.textContent = 'Product data is temporarily unavailable. Featured products and contact links remain available.';
+    productGrid.replaceChildren(message);
 }
 
 async function renderProducts() {
@@ -352,11 +412,23 @@ async function renderProducts() {
         return;
     }
 
-    const products = await loadProducts();
-    renderAmbientBackground(products);
-    productGrid.replaceChildren(...products.map(createProductCard));
-    productCards = Array.from(productGrid.querySelectorAll('.product-card'));
-    updateProductFilter('all');
+    productGrid.setAttribute('aria-busy', 'true');
+
+    try {
+        const products = await loadProducts();
+        renderAmbientBackground(products);
+        renderFeaturedProducts(products);
+        renderFilters(products);
+        productGrid.replaceChildren(...products.map(createProductCard));
+        productCards = Array.from(productGrid.querySelectorAll('.product-card'));
+        secureExternalLinks(productGrid);
+        secureExternalLinks(featuredGrid || document);
+        updateProductFilter('all');
+    } catch (error) {
+        renderProductError();
+    } finally {
+        productGrid.setAttribute('aria-busy', 'false');
+    }
 }
 
 renderProducts();
