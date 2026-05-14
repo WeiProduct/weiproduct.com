@@ -49,6 +49,7 @@ if (year) {
 
 const productGrid = document.getElementById('productGrid');
 const productCount = document.getElementById('productCount');
+const siteAppBackground = document.getElementById('siteAppBackground');
 const filterButtons = Array.from(document.querySelectorAll('.filter-chip'));
 let productCards = [];
 
@@ -122,6 +123,79 @@ function createProductCard(product) {
     return card;
 }
 
+const ambientRows = [
+    {
+        duration: '118s',
+        offset: '-8%',
+        top: '9%',
+        products: ['Piggy Accounting', 'AI Weather', 'Food Calories', 'AI Smart Light', 'AI Daily Matters', 'AI Note']
+    },
+    {
+        duration: '132s',
+        offset: '-27%',
+        top: '31%',
+        products: ['AI Calendar', 'AI Pomodoro Timer', 'Dating Chat', 'Meditation', 'AIMBTI', 'AI Voice Notes']
+    },
+    {
+        duration: '124s',
+        offset: '-15%',
+        top: '54%',
+        products: ['Habits', 'AI Vocabulary', 'AI Platform', 'Dailymatters', 'AI Drink Water', 'AI Calendar']
+    },
+    {
+        duration: '146s',
+        offset: '-34%',
+        top: '77%',
+        products: ['AI Voice Notes', 'Food Calories', 'AI Pomodoro Timer', 'AI Smart Light', 'AI Weather', 'Piggy Accounting']
+    }
+];
+
+function createAmbientIcon(product) {
+    const image = document.createElement('img');
+    image.className = 'ambient-icon';
+    image.src = product.icon;
+    image.alt = '';
+    image.width = 120;
+    image.height = 120;
+    image.decoding = 'async';
+    image.loading = 'lazy';
+    return image;
+}
+
+function createAmbientGroup(products) {
+    const group = document.createElement('div');
+    group.className = 'ambient-group';
+    group.append(...products.map(createAmbientIcon));
+    return group;
+}
+
+function renderAmbientBackground(products) {
+    if (!siteAppBackground) {
+        return;
+    }
+
+    const productsByName = new Map(products.map(product => [product.name, product]));
+    const rows = ambientRows.map(rowConfig => {
+        const rowProducts = rowConfig.products
+            .map(name => productsByName.get(name))
+            .filter(Boolean);
+
+        const row = document.createElement('div');
+        row.className = 'ambient-row';
+        row.style.setProperty('--duration', rowConfig.duration);
+        row.style.setProperty('--offset', rowConfig.offset);
+        row.style.setProperty('--row-top', rowConfig.top);
+
+        const track = document.createElement('div');
+        track.className = 'ambient-track';
+        track.append(createAmbientGroup(rowProducts), createAmbientGroup(rowProducts));
+        row.append(track);
+        return row;
+    });
+
+    siteAppBackground.replaceChildren(...rows);
+}
+
 async function renderProducts() {
     if (!productGrid) {
         return;
@@ -133,6 +207,7 @@ async function renderProducts() {
             throw new Error('Product data unavailable');
         }
         const products = await response.json();
+        renderAmbientBackground(products);
         productGrid.replaceChildren(...products.map(createProductCard));
         productCards = Array.from(productGrid.querySelectorAll('.product-card'));
         updateProductFilter('all');
