@@ -22,6 +22,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
     background: #ffffff;
 }
 
@@ -31,6 +32,8 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 img {
@@ -40,6 +43,12 @@ img {
 
 a {
     color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.34);
+    outline-offset: 3px;
 }
 
 .container {
@@ -459,6 +468,37 @@ section {
     text-align: right;
 }
 
+.product-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-chip {
+    min-height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 13px;
+    background: #ffffff;
+    color: #334155;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 750;
+}
+
+.filter-chip:hover {
+    border-color: #bfdbfe;
+    color: var(--blue);
+}
+
+.filter-chip.active {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: #ffffff;
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -472,6 +512,10 @@ section {
     padding: 18px;
     background: var(--card);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card[hidden] {
+    display: none;
 }
 
 .product-card:hover {
@@ -736,6 +780,16 @@ section {
     .portfolio-toolbar p {
         margin-top: 6px;
         text-align: left;
+    }
+
+    .product-filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .filter-chip {
+        flex: 0 0 auto;
     }
 
     .footer-layout {

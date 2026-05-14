@@ -47,6 +47,38 @@ if (year) {
     year.textContent = new Date().getFullYear();
 }
 
+const filterButtons = Array.from(document.querySelectorAll('.filter-chip'));
+const productCards = Array.from(document.querySelectorAll('.product-card'));
+const productCount = document.getElementById('productCount');
+
+function updateProductFilter(filter) {
+    let visibleCount = 0;
+
+    productCards.forEach(card => {
+        const isVisible = filter === 'all' || card.dataset.group === filter;
+        card.hidden = !isVisible;
+        if (isVisible) {
+            visibleCount += 1;
+        }
+    });
+
+    filterButtons.forEach(button => {
+        const isActive = button.dataset.filter === filter;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+    });
+
+    if (productCount) {
+        productCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'product' : 'products'}`;
+    }
+}
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        updateProductFilter(button.dataset.filter || 'all');
+    });
+});
+
 if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
