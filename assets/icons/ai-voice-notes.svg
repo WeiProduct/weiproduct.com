@@ -1,0 +1,16 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" fill="#f5f5f0"/>
+  <g transform="translate(512,512)">
+    <!-- Microphone body -->
+    <ellipse cx="0" cy="-150" rx="100" ry="180" fill="#2c3e50"/>
+    <!-- Microphone stand -->
+    <rect x="-8" y="30" width="16" height="150" fill="#2c3e50"/>
+    <!-- Microphone base -->
+    <ellipse cx="0" cy="200" rx="120" ry="20" fill="#2c3e50"/>
+    <!-- Sound waves -->
+    <path d="M -150,-100 Q -180,-150 -150,-200 Q -120,-150 -150,-100" stroke="#2c3e50" stroke-width="12" fill="none"/>
+    <path d="M 150,-100 Q 180,-150 150,-200 Q 120,-150 150,-100" stroke="#2c3e50" stroke-width="12" fill="none"/>
+    <!-- Sound wave lines inside mic -->
+    <path d="M -40,-180 L 40,-180 M -40,-150 L 40,-150 M -40,-120 L 40,-120" stroke="#f5f5f0" stroke-width="8"/>
+  </g>
+</svg>
