@@ -116,8 +116,8 @@ button:focus-visible {
 .ambient-row {
     position: absolute;
     top: var(--row-top);
-    left: -16vw;
-    right: -16vw;
+    left: 0;
+    right: 0;
     height: clamp(82px, 8vw, 128px);
     overflow: hidden;
     transform: translateY(-50%);
@@ -904,8 +904,6 @@ section {
     }
 
     .ambient-row {
-        left: -42vw;
-        right: -42vw;
         height: 78px;
     }
 
