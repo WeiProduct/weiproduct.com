@@ -47,9 +47,10 @@ if (year) {
     year.textContent = new Date().getFullYear();
 }
 
-const filterButtons = Array.from(document.querySelectorAll('.filter-chip'));
-const productCards = Array.from(document.querySelectorAll('.product-card'));
+const productGrid = document.getElementById('productGrid');
 const productCount = document.getElementById('productCount');
+const filterButtons = Array.from(document.querySelectorAll('.filter-chip'));
+let productCards = [];
 
 function updateProductFilter(filter) {
     let visibleCount = 0;
@@ -78,6 +79,69 @@ filterButtons.forEach(button => {
         updateProductFilter(button.dataset.filter || 'all');
     });
 });
+
+function getCategoryClass(group) {
+    const allowed = new Set(['finance', 'productivity', 'wellness', 'utility', 'learning', 'lifestyle']);
+    return allowed.has(group) ? group : 'utility';
+}
+
+function createProductCard(product) {
+    const card = document.createElement('article');
+    card.className = 'product-card';
+    card.dataset.group = product.group;
+
+    const image = document.createElement('img');
+    image.src = product.icon;
+    image.alt = `${product.name} icon`;
+    image.width = 120;
+    image.height = 120;
+    image.decoding = 'async';
+    image.loading = 'lazy';
+
+    const category = document.createElement('span');
+    category.className = `category ${getCategoryClass(product.group)}`;
+    category.textContent = product.category;
+
+    const title = document.createElement('h3');
+    title.textContent = product.name;
+
+    const description = document.createElement('p');
+    description.textContent = product.description;
+
+    const links = document.createElement('div');
+    links.className = 'product-links';
+
+    const link = document.createElement('a');
+    link.href = product.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = 'Website';
+    links.append(link);
+
+    card.append(image, category, title, description, links);
+    return card;
+}
+
+async function renderProducts() {
+    if (!productGrid) {
+        return;
+    }
+
+    try {
+        const response = await fetch('products.json', { cache: 'no-store' });
+        if (!response.ok) {
+            throw new Error('Product data unavailable');
+        }
+        const products = await response.json();
+        productGrid.replaceChildren(...products.map(createProductCard));
+        productCards = Array.from(productGrid.querySelectorAll('.product-card'));
+        updateProductFilter('all');
+    } catch (error) {
+        productGrid.innerHTML = '<p class="product-fallback">Product portfolio is temporarily unavailable. Please use the featured product links above.</p>';
+    }
+}
+
+renderProducts();
 
 if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
