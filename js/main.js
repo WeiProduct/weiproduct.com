@@ -53,6 +53,145 @@ const siteAppBackground = document.getElementById('siteAppBackground');
 const filterButtons = Array.from(document.querySelectorAll('.filter-chip'));
 let productCards = [];
 
+const fallbackProducts = [
+    {
+        name: 'Piggy Accounting',
+        category: 'Finance',
+        group: 'finance',
+        icon: 'assets/icons/piggyfinance.png',
+        description: 'Expense tracking and personal accounting for clearer money habits.',
+        url: 'https://weiproduct.github.io/piggy-finance/'
+    },
+    {
+        name: 'AI Calendar',
+        category: 'Planning',
+        group: 'productivity',
+        icon: 'assets/icons/ai-calendar.png',
+        description: 'Daily scheduling and planning with an AI-first workflow.',
+        url: 'https://weiproduct.github.io/AICalendar/'
+    },
+    {
+        name: 'Habits',
+        category: 'Habits',
+        group: 'wellness',
+        icon: 'assets/icons/weirabits.png',
+        description: 'Habit formation support for routines that need simple, consistent tracking.',
+        url: 'https://weiproduct.github.io/WeiRabits/docs/index.html'
+    },
+    {
+        name: 'AI Weather',
+        category: 'Utility',
+        group: 'utility',
+        icon: 'assets/icons/weatherspro.png',
+        description: 'Weather information packaged for fast everyday decisions.',
+        url: 'https://weiproduct.github.io/Weather/'
+    },
+    {
+        name: 'AI Pomodoro Timer',
+        category: 'Focus',
+        group: 'productivity',
+        icon: 'assets/icons/ai-tomato-clock.png',
+        description: 'Timeboxing and focus sessions for work, study, and personal routines.',
+        url: 'https://weiproduct.github.io/AITomatoClock/'
+    },
+    {
+        name: 'AI Vocabulary',
+        category: 'Learning',
+        group: 'learning',
+        icon: 'assets/icons/ai-vocabulary.png',
+        description: 'Vocabulary practice for learners who want lightweight daily study.',
+        url: 'https://weiproduct.github.io/aiwordslearning/'
+    },
+    {
+        name: 'Food Calories',
+        category: 'Health',
+        group: 'wellness',
+        icon: 'assets/icons/ai-calories.png',
+        description: 'Food and calorie awareness for simpler nutrition tracking.',
+        url: 'https://weiproduct.github.io/AICaloriesSupport-/'
+    },
+    {
+        name: 'Dating Chat',
+        category: 'Lifestyle',
+        group: 'lifestyle',
+        icon: 'assets/icons/ai-helper.png',
+        description: 'Conversation support for people who want clearer, more confident messaging.',
+        url: 'https://weiproduct.github.io/aidatingchat2/'
+    },
+    {
+        name: 'AI Platform',
+        category: 'AI Utility',
+        group: 'utility',
+        icon: 'assets/icons/ai-platform.png',
+        description: 'A compact mobile interface for accessing AI assistance in one place.',
+        url: 'https://weiproduct.github.io/ai-platform-support/'
+    },
+    {
+        name: 'AI Smart Light',
+        category: 'Camera',
+        group: 'utility',
+        icon: 'assets/icons/smart-light-master.png',
+        description: 'Lighting support for content, calls, photos, and quick visual setup.',
+        url: 'https://weiproduct.github.io/AISmartlight/'
+    },
+    {
+        name: 'Meditation',
+        category: 'Wellness',
+        group: 'wellness',
+        icon: 'assets/icons/ai-meditation.png',
+        description: 'Guided calm and reflection moments built for a mobile daily routine.',
+        url: 'https://weiproduct.github.io/AIMeditation/'
+    },
+    {
+        name: 'Dailymatters',
+        category: 'Journal',
+        group: 'productivity',
+        icon: 'assets/icons/dailymatters.png',
+        description: 'Daily tracking for thoughts, moments, and personal organization.',
+        url: 'https://weiproduct.github.io/dailymatters/'
+    },
+    {
+        name: 'AI Daily Matters',
+        category: 'Journal',
+        group: 'productivity',
+        icon: 'assets/icons/aidailymatters.png',
+        description: 'An AI-supported companion for capturing and organizing daily matters.',
+        url: 'https://weiproduct.github.io/AIDailyMatters/'
+    },
+    {
+        name: 'AIMBTI',
+        category: 'Personality',
+        group: 'lifestyle',
+        icon: 'assets/icons/aimbti.png',
+        description: 'Personality reflection and AI-assisted self-understanding.',
+        url: 'https://weiproduct.github.io/MBTI/'
+    },
+    {
+        name: 'AI Drink Water',
+        category: 'Health',
+        group: 'wellness',
+        icon: 'assets/icons/aidrinkwater.png',
+        description: 'Hydration reminders and simple wellness habit support.',
+        url: 'https://weiproduct.github.io/Drinking/'
+    },
+    {
+        name: 'AI Note',
+        category: 'Notes',
+        group: 'productivity',
+        icon: 'assets/icons/ainote.png',
+        description: 'Note capture and organization for ideas that need to become useful.',
+        url: 'https://weiproduct.github.io/notes/'
+    },
+    {
+        name: 'AI Voice Notes',
+        category: 'Voice',
+        group: 'productivity',
+        icon: 'assets/icons/ai-voice-notes.png',
+        description: 'Voice capture for meetings, study, quick thoughts, and personal notes.',
+        url: 'https://weiproduct.github.io/recording/'
+    }
+];
+
 function updateProductFilter(filter) {
     let visibleCount = 0;
 
@@ -196,24 +335,28 @@ function renderAmbientBackground(products) {
     siteAppBackground.replaceChildren(...rows);
 }
 
-async function renderProducts() {
-    if (!productGrid) {
-        return;
-    }
-
+async function loadProducts() {
     try {
         const response = await fetch('products.json', { cache: 'no-store' });
         if (!response.ok) {
             throw new Error('Product data unavailable');
         }
-        const products = await response.json();
-        renderAmbientBackground(products);
-        productGrid.replaceChildren(...products.map(createProductCard));
-        productCards = Array.from(productGrid.querySelectorAll('.product-card'));
-        updateProductFilter('all');
+        return response.json();
     } catch (error) {
-        productGrid.innerHTML = '<p class="product-fallback">Product portfolio is temporarily unavailable. Please use the featured product links above.</p>';
+        return fallbackProducts;
     }
+}
+
+async function renderProducts() {
+    if (!productGrid) {
+        return;
+    }
+
+    const products = await loadProducts();
+    renderAmbientBackground(products);
+    productGrid.replaceChildren(...products.map(createProductCard));
+    productCards = Array.from(productGrid.querySelectorAll('.product-card'));
+    updateProductFilter('all');
 }
 
 renderProducts();
