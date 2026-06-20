@@ -207,13 +207,13 @@ function createIconImage(product, size = 120, lazy = true) {
     return image;
 }
 
-function createProductLink(product, label = 'Product site') {
+function createProductLink(product, label = 'Agent site') {
     const link = document.createElement('a');
     link.href = product.url;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.textContent = label;
-    link.setAttribute('aria-label', `Open ${product.name} product site`);
+    link.setAttribute('aria-label', `Open ${product.name} agent site`);
     return link;
 }
 
@@ -339,7 +339,7 @@ function updateProductFilter(filter) {
     });
 
     if (productCount) {
-        productCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'product' : 'products'}`;
+        productCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'agent surface' : 'agent surfaces'}`;
     }
 }
 
@@ -403,7 +403,7 @@ function renderProductError() {
 
     const message = document.createElement('p');
     message.className = 'product-fallback';
-    message.textContent = 'Product data is temporarily unavailable. Featured products and contact links remain available.';
+    message.textContent = 'Agent data is temporarily unavailable. Featured agents and contact links remain available.';
     productGrid.replaceChildren(message);
 }
 
