@@ -416,6 +416,10 @@ section {
     content: "@";
 }
 
+.icon-location::before {
+    content: "CA";
+}
+
 .icon-github::before {
     content: "GH";
 }
