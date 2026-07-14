@@ -19,8 +19,11 @@
     <meta name="twitter:image" content="https://weiproduct.com/assets/brand/social-card.png">
 
     <title>WeiProduct | Multi-Agent AI Comprehensive System</title>
-    <link rel="preload" href="css/style.css?v=20260514-site-system" as="style">
-    <link rel="stylesheet" href="css/style.css?v=20260514-site-system">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    <link rel="preload" href="css/style.css?v=20260713-premium" as="style">
+    <link rel="stylesheet" href="css/style.css?v=20260713-premium">
     <link rel="canonical" href="https://weiproduct.com/">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="assets/icons/ai-voice-notes@2x.png" sizes="180x180">
@@ -169,7 +172,23 @@
 </head>
 <body>
     <a class="skip-link" href="#home">Skip to content</a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
     <div class="site-app-background" id="siteAppBackground" aria-hidden="true"></div>
+    <svg width="0" height="0" class="icon-sprite" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></symbol>
+            <symbol id="i-founder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+            <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/></symbol>
+            <symbol id="i-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+            <symbol id="i-ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5 13.8 11.3 12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z"/></symbol>
+            <symbol id="i-compound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M16 7h5v5"/></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.4"/><path d="m3.6 7.2 8.4 6 8.4-6"/></symbol>
+            <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3.5h3l1.5 4.5-2.1 1.4a11.5 11.5 0 0 0 4.7 4.7l1.4-2.1 4.5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.7a2 2 0 0 1 2-2.2z"/></symbol>
+            <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s-6.5-5.4-6.5-10.7A6.5 6.5 0 0 1 18.5 10.8C18.5 16.1 12 21.5 12 21.5z"/><circle cx="12" cy="10.6" r="2.5"/></symbol>
+            <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.85 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.49-1.11-1.49-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></symbol>
+            <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4.001-.001A2 2 0 0 1 6.94 5zM3.3 8.48h3.28V21H3.3V8.48zM9.5 8.48h3.14v1.71h.05c.44-.83 1.5-1.7 3.1-1.7 3.31 0 3.92 2.18 3.92 5.01V21h-3.28v-5.55c0-1.32-.02-3.02-1.84-3.02-1.84 0-2.13 1.44-2.13 2.93V21H9.5V8.48z"/></symbol>
+        </defs>
+    </svg>
     <nav class="navbar">
         <div class="container nav-container">
             <a class="brand" href="#home" aria-label="WeiProduct home">
@@ -201,21 +220,21 @@
                     </p>
                     <div class="hero-actions">
                         <a href="#products" class="btn btn-primary">
-                            <span aria-hidden="true" class="ui-icon icon-layers"></span>
+                            <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-grid"></use></svg></span>
                             See the agent system
                         </a>
                         <a href="#founder" class="btn btn-secondary">
-                            <span aria-hidden="true" class="ui-icon icon-founder"></span>
+                            <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-founder"></use></svg></span>
                             Founder edge
                         </a>
                     </div>
                     <div class="hero-metrics" aria-label="Company metrics">
                         <div>
-                            <strong>17</strong>
+                            <strong data-count-to="17">17</strong>
                             <span>Specialized AI agents in the current system</span>
                         </div>
                         <div>
-                            <strong>5</strong>
+                            <strong data-count-to="5">5</strong>
                             <span>Life domains connected into one context layer</span>
                         </div>
                         <div>
@@ -298,22 +317,22 @@
                 </div>
                 <div class="focus-grid">
                     <article>
-                        <span aria-hidden="true" class="ui-icon icon-bolt"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-target"></use></svg></span>
                         <h3>Ship narrow</h3>
                         <p>Each agent starts with one clear job so users can understand the value quickly.</p>
                     </article>
                     <article>
-                        <span aria-hidden="true" class="ui-icon icon-phone"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-device"></use></svg></span>
                         <h3>Design for moments</h3>
                         <p>The system is built around phone-native moments: quick capture, quick review, and quick action.</p>
                     </article>
                     <article>
-                        <span aria-hidden="true" class="ui-icon icon-ai"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-ai"></use></svg></span>
                         <h3>Use agents as leverage</h3>
                         <p>AI agents reduce friction, summarize, suggest, and personalize while keeping each daily workflow lightweight.</p>
                     </article>
                     <article>
-                        <span aria-hidden="true" class="ui-icon icon-compound"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-compound"></use></svg></span>
                         <h3>Compound what works</h3>
                         <p>Reusable support pages, app patterns, and domain learnings make every new agent cheaper to test and easier to connect.</p>
                     </article>
@@ -359,23 +378,23 @@
                 </div>
                 <div class="contact-card">
                     <a href="mailto:founder@weiproduct.com" class="contact-method">
-                        <span aria-hidden="true" class="ui-icon icon-mail"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-mail"></use></svg></span>
                         <span>founder@weiproduct.com</span>
                     </a>
                     <a href="tel:+14135888637" class="contact-method">
-                        <span aria-hidden="true" class="ui-icon icon-phone"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-phone"></use></svg></span>
                         <span>4135888637</span>
                     </a>
                     <div class="contact-method">
-                        <span aria-hidden="true" class="ui-icon icon-location"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-pin"></use></svg></span>
                         <span>Our Location: San Francisco Bay Area California, USA</span>
                     </div>
                     <a href="https://github.com/WeiProduct" target="_blank" rel="noopener noreferrer" class="contact-method">
-                        <span aria-hidden="true" class="ui-icon icon-github"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-github"></use></svg></span>
                         <span>GitHub</span>
                     </a>
                     <a href="https://www.linkedin.com/in/wei-fu-004724256/" target="_blank" rel="noopener noreferrer" class="contact-method">
-                        <span aria-hidden="true" class="ui-icon icon-linkedin"></span>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-linkedin"></use></svg></span>
                         <span>LinkedIn</span>
                     </a>
                 </div>
@@ -384,12 +403,36 @@
     </main>
 
     <footer class="footer">
-        <div class="container footer-layout">
-            <a class="brand footer-brand" href="#home" aria-label="WeiProduct home">
-                <span class="brand-mark">W</span>
-                <span class="brand-name">WeiProduct</span>
-            </a>
-            <p>&copy; <span id="currentYear">2026</span> WeiProduct. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-intro">
+                    <a class="brand footer-brand" href="#home" aria-label="WeiProduct home">
+                        <span class="brand-mark">W</span>
+                        <span class="brand-name">WeiProduct</span>
+                    </a>
+                    <p>A comprehensive multi-agent AI system connecting 17 focused apps into one personal context layer for better everyday decisions.</p>
+                </div>
+                <nav class="footer-nav" aria-label="Explore">
+                    <h4>Explore</h4>
+                    <a href="#thesis">Investment thesis</a>
+                    <a href="#products">Agent system</a>
+                    <a href="#founder">Founder edge</a>
+                    <a href="#contact">Investor contact</a>
+                </nav>
+                <div class="footer-connect">
+                    <h4>Connect</h4>
+                    <div class="footer-socials">
+                        <a href="https://github.com/WeiProduct" target="_blank" rel="noopener noreferrer" aria-label="WeiProduct on GitHub"><svg class="ui-svg"><use href="#i-github"></use></svg></a>
+                        <a href="https://www.linkedin.com/in/wei-fu-004724256/" target="_blank" rel="noopener noreferrer" aria-label="Wei Fu on LinkedIn"><svg class="ui-svg"><use href="#i-linkedin"></use></svg></a>
+                        <a href="mailto:founder@weiproduct.com" aria-label="Email WeiProduct"><svg class="ui-svg"><use href="#i-mail"></use></svg></a>
+                    </div>
+                    <a class="footer-email" href="mailto:founder@weiproduct.com">founder@weiproduct.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> WeiProduct. All rights reserved.</p>
+                <p>San Francisco Bay Area, California</p>
+            </div>
         </div>
     </footer>
     <script type="application/json" id="productData">
@@ -532,6 +575,6 @@
       }
     ]
     </script>
-    <script src="js/main.js?v=20260514-site-system" defer></script>
+    <script src="js/main.js?v=20260713-premium" defer></script>
 </body>
 </html>

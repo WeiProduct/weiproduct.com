@@ -451,3 +451,120 @@ if ('IntersectionObserver' in window) {
         observer.observe(section);
     });
 }
+
+// Hero metric count-up
+(function initCountUp() {
+    const counters = Array.from(document.querySelectorAll('[data-count-to]'));
+    if (!counters.length) {
+        return;
+    }
+
+    if (prefersReducedMotion) {
+        counters.forEach(el => { el.textContent = el.dataset.countTo; });
+        return;
+    }
+
+    const animate = (el) => {
+        const target = parseInt(el.dataset.countTo, 10) || 0;
+        const duration = 1100;
+        const start = performance.now();
+        const step = (now) => {
+            const progress = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = String(Math.round(target * eased));
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                el.textContent = String(target);
+            }
+        };
+        requestAnimationFrame(step);
+    };
+
+    if ('IntersectionObserver' in window) {
+        const countObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animate(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+        counters.forEach(el => { el.textContent = '0'; countObserver.observe(el); });
+    } else {
+        counters.forEach(animate);
+    }
+})();
+
+// Scroll progress bar + nav shadow
+(function initScrollUI() {
+    const progress = document.getElementById('scrollProgress');
+    const navbar = document.querySelector('.navbar');
+
+    const onScroll = () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
+        if (progress) {
+            progress.style.width = `${ratio * 100}%`;
+        }
+        if (navbar) {
+            navbar.classList.toggle('scrolled', scrollTop > 8);
+        }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+})();
+
+// Active-section nav highlight (scroll-spy)
+(function initScrollSpy() {
+    if (!('IntersectionObserver' in window)) {
+        return;
+    }
+
+    const links = Array.from(document.querySelectorAll('.nav-link'));
+    const sectionToLink = new Map();
+    links.forEach(link => {
+        const id = (link.getAttribute('href') || '').slice(1);
+        const section = id && document.getElementById(id);
+        if (section) {
+            sectionToLink.set(section, link);
+        }
+    });
+
+    if (!sectionToLink.size) {
+        return;
+    }
+
+    const visible = new Set();
+    const setActive = () => {
+        let best = null;
+        let bestTop = Infinity;
+        visible.forEach(section => {
+            const top = section.getBoundingClientRect().top;
+            if (top < bestTop) {
+                bestTop = top;
+                best = section;
+            }
+        });
+        links.forEach(link => link.classList.remove('active'));
+        if (best && sectionToLink.has(best)) {
+            sectionToLink.get(best).classList.add('active');
+        }
+    };
+
+    const spy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                visible.add(entry.target);
+            } else {
+                visible.delete(entry.target);
+            }
+        });
+        setActive();
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+    sectionToLink.forEach((_, section) => spy.observe(section));
+})();
