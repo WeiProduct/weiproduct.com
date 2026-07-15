@@ -5,7 +5,8 @@
     "group": "finance",
     "icon": "assets/icons/piggyfinance.png",
     "description": "Expense tracking and personal accounting for clearer money habits.",
-    "url": "https://weiproduct.github.io/piggy-finance/"
+    "url": "https://weiproduct.github.io/piggy-finance/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748370595"
   },
   {
     "name": "AI Calendar",
@@ -13,7 +14,8 @@
     "group": "productivity",
     "icon": "assets/icons/ai-calendar.png",
     "description": "Daily scheduling and planning with an AI-first workflow.",
-    "url": "https://weiproduct.github.io/AICalendar/"
+    "url": "https://weiproduct.github.io/AICalendar/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748324487"
   },
   {
     "name": "Habits",
@@ -21,7 +23,8 @@
     "group": "wellness",
     "icon": "assets/icons/weirabits.png",
     "description": "Habit formation support for routines that need simple, consistent tracking.",
-    "url": "https://weiproduct.github.io/WeiRabits/docs/index.html"
+    "url": "https://weiproduct.github.io/WeiRabits/docs/index.html",
+    "appStoreUrl": "https://apps.apple.com/app/id6748370992"
   },
   {
     "name": "AI Weather",
@@ -29,7 +32,8 @@
     "group": "utility",
     "icon": "assets/icons/weatherspro.png",
     "description": "Weather information packaged for fast everyday decisions.",
-    "url": "https://weiproduct.github.io/Weather/"
+    "url": "https://weiproduct.github.io/Weather/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748373741"
   },
   {
     "name": "AI Pomodoro Timer",
@@ -37,7 +41,8 @@
     "group": "productivity",
     "icon": "assets/icons/ai-tomato-clock.png",
     "description": "Timeboxing and focus sessions for work, study, and personal routines.",
-    "url": "https://weiproduct.github.io/AITomatoClock/"
+    "url": "https://weiproduct.github.io/AITomatoClock/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748548518"
   },
   {
     "name": "AI Vocabulary",
@@ -45,7 +50,8 @@
     "group": "learning",
     "icon": "assets/icons/ai-vocabulary.png",
     "description": "Vocabulary practice for learners who want lightweight daily study.",
-    "url": "https://weiproduct.github.io/aiwordslearning/"
+    "url": "https://weiproduct.github.io/aiwordslearning/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748568205"
   },
   {
     "name": "Food Calories",
@@ -53,7 +59,8 @@
     "group": "wellness",
     "icon": "assets/icons/ai-calories.png",
     "description": "Food and calorie awareness for simpler nutrition tracking.",
-    "url": "https://weiproduct.github.io/AICaloriesSupport-/"
+    "url": "https://weiproduct.github.io/AICaloriesSupport-/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748717022"
   },
   {
     "name": "Dating Chat",
@@ -61,7 +68,8 @@
     "group": "lifestyle",
     "icon": "assets/icons/ai-helper.png",
     "description": "Conversation support for people who want clearer, more confident messaging.",
-    "url": "https://weiproduct.github.io/aidatingchat2/"
+    "url": "https://weiproduct.github.io/aidatingchat2/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748549192"
   },
   {
     "name": "AI Platform",
@@ -69,7 +77,8 @@
     "group": "utility",
     "icon": "assets/icons/ai-platform.png",
     "description": "A compact mobile interface for accessing AI assistance in one place.",
-    "url": "https://weiproduct.github.io/ai-platform-support/"
+    "url": "https://weiproduct.github.io/ai-platform-support/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748650326"
   },
   {
     "name": "AI Smart Light",
@@ -77,7 +86,8 @@
     "group": "utility",
     "icon": "assets/icons/smart-light-master.png",
     "description": "Lighting support for content, calls, photos, and quick visual setup.",
-    "url": "https://weiproduct.github.io/AISmartlight/"
+    "url": "https://weiproduct.github.io/AISmartlight/",
+    "appStoreUrl": "https://apps.apple.com/app/id6749024443"
   },
   {
     "name": "Meditation",
@@ -85,7 +95,8 @@
     "group": "wellness",
     "icon": "assets/icons/ai-meditation.png",
     "description": "Guided calm and reflection moments built for a mobile daily routine.",
-    "url": "https://weiproduct.github.io/AIMeditation/"
+    "url": "https://weiproduct.github.io/AIMeditation/",
+    "appStoreUrl": "https://apps.apple.com/app/id6749164175"
   },
   {
     "name": "Dailymatters",
@@ -93,7 +104,8 @@
     "group": "productivity",
     "icon": "assets/icons/dailymatters.png",
     "description": "Daily tracking for thoughts, moments, and personal organization.",
-    "url": "https://weiproduct.github.io/dailymatters/"
+    "url": "https://weiproduct.github.io/dailymatters/",
+    "appStoreUrl": "https://apps.apple.com/app/id6749191628"
   },
   {
     "name": "AI Daily Matters",
@@ -101,7 +113,8 @@
     "group": "productivity",
     "icon": "assets/icons/aidailymatters.png",
     "description": "An AI-supported companion for capturing and organizing daily matters.",
-    "url": "https://weiproduct.github.io/AIDailyMatters/"
+    "url": "https://weiproduct.github.io/AIDailyMatters/",
+    "appStoreUrl": "https://apps.apple.com/app/id6749191633"
   },
   {
     "name": "AIMBTI",
@@ -109,7 +122,8 @@
     "group": "lifestyle",
     "icon": "assets/icons/aimbti.png",
     "description": "Personality reflection and AI-assisted self-understanding.",
-    "url": "https://weiproduct.github.io/MBTI/"
+    "url": "https://weiproduct.github.io/MBTI/",
+    "appStoreUrl": "https://apps.apple.com/app/id6749165632"
   },
   {
     "name": "AI Drink Water",
@@ -117,7 +131,8 @@
     "group": "wellness",
     "icon": "assets/icons/aidrinkwater.png",
     "description": "Hydration reminders and simple wellness habit support.",
-    "url": "https://weiproduct.github.io/Drinking/"
+    "url": "https://weiproduct.github.io/Drinking/",
+    "appStoreUrl": "https://apps.apple.com/app/id6749274211"
   },
   {
     "name": "AI Note",
@@ -125,7 +140,8 @@
     "group": "productivity",
     "icon": "assets/icons/ainote.png",
     "description": "Note capture and organization for ideas that need to become useful.",
-    "url": "https://weiproduct.github.io/notes/"
+    "url": "https://weiproduct.github.io/notes/",
+    "appStoreUrl": "https://apps.apple.com/app/id6749283592"
   },
   {
     "name": "AI Voice Notes",
@@ -133,6 +149,7 @@
     "group": "productivity",
     "icon": "assets/icons/ai-voice-notes.png",
     "description": "Voice capture for meetings, study, quick thoughts, and personal notes.",
-    "url": "https://weiproduct.github.io/recording/"
+    "url": "https://weiproduct.github.io/recording/",
+    "appStoreUrl": "https://apps.apple.com/app/id6748947046"
   }
 ]

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0f172a">
+    <!-- ADDED: dark-mode theme-color (prefers-color-scheme) -->
+    <meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
     <meta name="description" content="WeiProduct is a founder-led comprehensive multi-agent AI system built from 17 focused apps across productivity, finance, learning, wellness, and daily utility.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="WeiProduct | Multi-Agent AI Comprehensive System">
@@ -169,6 +171,65 @@
       ]
     }
     </script>
+    <!-- ADDED: FAQPage structured data (investor FAQ) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why build 17 apps instead of one product?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each app is a focused agent for one recurring life domain: planning, money, learning, health, notes, habits, and utility. Shipping many narrow agents lets the system observe real behavior across the whole person, learn where AI creates durable habits, and connect the strongest signals into one shared context layer. It is a deliberate multi-agent strategy, not scattered app-making."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does WeiProduct make money?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monetization runs through the App Store across the portfolio: subscriptions and in-app purchases on the individual apps, with the option to introduce a cross-agent premium tier as the shared context layer matures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the defensibility or moat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three compounding layers: shared agent infrastructure reused across every app (design system, support, API proxy, release tooling), cross-agent context where signals from one domain enrich decisions in another, and shipping velocity, since 17 apps are already live so each new agent is cheaper to test and faster to connect."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a solo founder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. WeiProduct is currently founder-led by Wei Fu, a University of Massachusetts Amherst graduate with dual BS degrees in Computer Science and Managerial Economics, which is what makes the shipping speed possible. The plan is to build a small focused team around the shared agent infrastructure and the cross-agent context layer as the company raises."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What stage is the company at?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "17 apps are live on the App Store today as specialized agents. The next phase connects them into a shared personal context layer. Traction metrics are being prepared and will be shared directly with serious investors."
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- ADDED: set theme before first paint to avoid a flash (localStorage, else prefers-color-scheme) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('weiproduct-theme');
+          var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
 </head>
 <body>
     <a class="skip-link" href="#home">Skip to content</a>
@@ -187,6 +248,13 @@
             <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s-6.5-5.4-6.5-10.7A6.5 6.5 0 0 1 18.5 10.8C18.5 16.1 12 21.5 12 21.5z"/><circle cx="12" cy="10.6" r="2.5"/></symbol>
             <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.85 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.49-1.11-1.49-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></symbol>
             <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4.001-.001A2 2 0 0 1 6.94 5zM3.3 8.48h3.28V21H3.3V8.48zM9.5 8.48h3.14v1.71h.05c.44-.83 1.5-1.7 3.1-1.7 3.31 0 3.92 2.18 3.92 5.01V21h-3.28v-5.55c0-1.32-.02-3.02-1.84-3.02-1.84 0-2.13 1.44-2.13 2.93V21H9.5V8.48z"/></symbol>
+            <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></symbol>
+            <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.2 8.2 0 0 1 9.8 3.5a8.2 8.2 0 1 0 10.7 10.7z"/></symbol>
+            <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5.6-2.2 2.1-2.5 4 1.9-.3 3.4-1 4-2.5"/><path d="M9 15l-3-3c1-4.2 3.7-7.5 8.5-8.9C15.9 3 17.5 3 18.9 3.1c.1 1.4.1 3-.1 4.4C17.5 12.3 14.2 15 10 16l-1-1z"/><circle cx="14.5" cy="8.5" r="1.6"/></symbol>
+            <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+            <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18.5" r="2.5"/><circle cx="18" cy="5.5" r="2.5"/><path d="M8.5 18.5H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.5"/></symbol>
+            <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.6v5.3c0 4.4-3 8-7 10-4-2-7-5.6-7-10V5.6L12 3z"/><path d="m9 12 2 2 4-4.2"/></symbol>
+            <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 14v3M12.5 10v7M17 6v11"/></symbol>
         </defs>
     </svg>
     <nav class="navbar">
@@ -195,6 +263,10 @@
                 <span class="brand-mark">W</span>
                 <span class="brand-name">WeiProduct</span>
             </a>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle dark mode">
+                <span class="theme-toggle-icon theme-icon-sun" aria-hidden="true"><svg class="ui-svg"><use href="#i-sun"></use></svg></span>
+                <span class="theme-toggle-icon theme-icon-moon" aria-hidden="true"><svg class="ui-svg"><use href="#i-moon"></use></svg></span>
+            </button>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
@@ -204,6 +276,8 @@
                 <li><a href="#thesis" class="nav-link">Thesis</a></li>
                 <li><a href="#products" class="nav-link">Agents</a></li>
                 <li><a href="#founder" class="nav-link">Founder</a></li>
+                <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
                 <li><a href="#contact" class="nav-link nav-cta">Investor contact</a></li>
             </ul>
         </div>
@@ -285,6 +359,29 @@
             </div>
         </section>
 
+        <!-- ADDED: personal context layer system diagram -->
+        <section id="contextlayer" class="contextlayer">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">System architecture</p>
+                    <h2>Every agent feeds one personal context layer.</h2>
+                    <p>
+                        Each app captures a different life signal. Those signals flow into a shared personal context layer, so the system can reason across domains: 17 specialized agents, five life domains, one coordinated view of the person.
+                    </p>
+                </div>
+                <div class="cl-diagram-wrap">
+                    <div class="cl-diagram" id="contextLayerDiagram" role="img" aria-label="Hub-and-spoke diagram: 17 specialized agents across five domains feeding one central personal context layer."></div>
+                    <ul class="cl-legend">
+                        <li><span class="cl-dot" data-cluster="productivity"></span>Productivity</li>
+                        <li><span class="cl-dot" data-cluster="wellness"></span>Wellness &amp; Health</li>
+                        <li><span class="cl-dot" data-cluster="finance"></span>Finance</li>
+                        <li><span class="cl-dot" data-cluster="learning"></span>Learning</li>
+                        <li><span class="cl-dot" data-cluster="utility"></span>Utility &amp; Lifestyle</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <section id="products" class="products">
             <div class="container">
                 <div class="section-heading">
@@ -306,6 +403,47 @@
                 <noscript>
                     <p class="product-fallback">Enable JavaScript to browse the full WeiProduct agent system. Featured agents remain available above.</p>
                 </noscript>
+            </div>
+        </section>
+
+        <!-- ADDED: shipping-velocity timeline + traction band -->
+        <section id="velocity" class="velocity">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Shipping velocity</p>
+                    <h2>17 agents shipped, in build order.</h2>
+                    <p>
+                        The strongest early signal is speed. Below is the portfolio in App Store build order; each node links to its live app.
+                        <span class="placeholder-tag">{{ 待填：真实发布时间线（起止日期）}}</span>
+                    </p>
+                </div>
+                <!-- {{ 待填：真实发布时间线 }} — build order is derived from real App Store IDs; add verified ship dates or a date range if desired. Do NOT invent dates. -->
+                <div class="velocity-scroll">
+                    <ol class="velocity-track" id="velocityTrack" aria-label="WeiProduct apps in App Store build order"></ol>
+                </div>
+                <div class="traction-band" aria-label="Portfolio facts">
+                    <div class="traction-stat">
+                        <span class="ui-icon"><svg class="ui-svg"><use href="#i-grid"></use></svg></span>
+                        <strong>17</strong>
+                        <span>Apps live on the App Store</span>
+                    </div>
+                    <div class="traction-stat">
+                        <span class="ui-icon"><svg class="ui-svg"><use href="#i-layers"></use></svg></span>
+                        <strong>5</strong>
+                        <span>Life domains connected</span>
+                    </div>
+                    <div class="traction-stat">
+                        <span class="ui-icon"><svg class="ui-svg"><use href="#i-shield"></use></svg></span>
+                        <strong>1</strong>
+                        <span>Shared agent + context infrastructure</span>
+                    </div>
+                    <div class="traction-stat traction-fill">
+                        <span class="ui-icon"><svg class="ui-svg"><use href="#i-chart"></use></svg></span>
+                        <strong class="placeholder-tag">{{ 待填：真实数据 }}</strong>
+                        <span>Downloads / MAU (owner to fill)</span>
+                    </div>
+                </div>
+                <!-- {{ 待填：真实数据 }} — replace the placeholder stat with verified downloads / MAU, or remove that tile. Do NOT invent numbers. -->
             </div>
         </section>
 
@@ -340,6 +478,55 @@
             </div>
         </section>
 
+        <!-- ADDED: 3-phase roadmap + moat / why-it-compounds -->
+        <section id="roadmap" class="roadmap">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Roadmap</p>
+                    <h2>From focused agents to a unified personal decision layer.</h2>
+                    <p>
+                        A three-phase path that compounds: ship narrow agents, connect them with shared context, then turn that context into one decision layer for the whole person.
+                    </p>
+                </div>
+                <ol class="roadmap-grid">
+                    <li class="roadmap-phase is-shipped">
+                        <div class="roadmap-phase-head">
+                            <span class="roadmap-badge">Phase 1</span>
+                            <span class="roadmap-status">Shipped</span>
+                        </div>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-rocket"></use></svg></span>
+                        <h3>Focused agents</h3>
+                        <p>17 specialized apps live on the App Store, each solving one recurring life workflow and reusing shared agent infrastructure.</p>
+                    </li>
+                    <li class="roadmap-phase is-progress">
+                        <div class="roadmap-phase-head">
+                            <span class="roadmap-badge">Phase 2</span>
+                            <span class="roadmap-status">In progress</span>
+                        </div>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-layers"></use></svg></span>
+                        <h3>Cross-agent context</h3>
+                        <p>Connect the strongest signals so agents share one personal context layer and a signal in one domain improves decisions in another.</p>
+                    </li>
+                    <li class="roadmap-phase is-planned">
+                        <div class="roadmap-phase-head">
+                            <span class="roadmap-badge">Phase 3</span>
+                            <span class="roadmap-status">Planned</span>
+                        </div>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-route"></use></svg></span>
+                        <h3>Unified decision layer</h3>
+                        <p>Turn the shared context into one personal decision layer that helps the whole person plan, learn, and act with better judgment.</p>
+                    </li>
+                </ol>
+                <div class="moat-band">
+                    <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-shield"></use></svg></span>
+                    <div>
+                        <strong>Why it compounds</strong>
+                        <p>Each new agent is cheaper to ship on shared infrastructure, adds another stream of context that makes every other agent smarter, and widens the shipping-velocity lead. Infrastructure, context, and speed reinforce each other, so the moat grows with every app.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="founder" class="studio founder">
             <div class="container studio-layout">
                 <div>
@@ -363,6 +550,48 @@
                         <span>Dean's List, 5 semesters</span>
                         <span>4-year merit scholarship</span>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADDED: investor FAQ accordion (native details/summary) -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Investor FAQ</p>
+                    <h2>Straight answers for investors.</h2>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item" open>
+                        <summary>Why build 17 apps instead of one product?</summary>
+                        <div class="faq-answer">
+                            <p>Each app is a focused agent for one recurring life domain: planning, money, learning, health, notes, habits, and utility. Shipping many narrow agents lets the system observe real behavior across the whole person, learn where AI creates durable habits, and connect the strongest signals into one shared context layer. It is a deliberate multi-agent strategy, not scattered app-making.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How does WeiProduct make money?</summary>
+                        <div class="faq-answer">
+                            <p>Monetization runs through the App Store across the portfolio: subscriptions and in-app purchases on the individual apps, with the option to introduce a cross-agent premium tier as the shared context layer matures.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What is the defensibility or moat?</summary>
+                        <div class="faq-answer">
+                            <p>Three compounding layers: shared agent infrastructure reused across every app (design system, support, API proxy, release tooling), cross-agent context where signals from one domain enrich decisions in another, and shipping velocity: 17 apps are already live, so each new agent is cheaper to test and faster to connect.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is this a solo founder?</summary>
+                        <div class="faq-answer">
+                            <p>Yes. WeiProduct is currently founder-led by Wei Fu, a University of Massachusetts Amherst graduate with dual BS degrees in Computer Science and Managerial Economics, which is what makes the shipping speed possible. The plan is to build a small focused team around the shared agent infrastructure and the cross-agent context layer as the company raises.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What stage is the company at?</summary>
+                        <div class="faq-answer">
+                            <p>17 apps are live on the App Store today as specialized agents. The next phase connects them into a shared personal context layer. Traction metrics are being prepared and will be shared directly with serious investors.</p>
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
@@ -443,7 +672,8 @@
         "group": "finance",
         "icon": "assets/icons/piggyfinance.png",
         "description": "Expense tracking and personal accounting for clearer money habits.",
-        "url": "https://weiproduct.github.io/piggy-finance/"
+        "url": "https://weiproduct.github.io/piggy-finance/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748370595"
       },
       {
         "name": "AI Calendar",
@@ -451,7 +681,8 @@
         "group": "productivity",
         "icon": "assets/icons/ai-calendar.png",
         "description": "Daily scheduling and planning with an AI-first workflow.",
-        "url": "https://weiproduct.github.io/AICalendar/"
+        "url": "https://weiproduct.github.io/AICalendar/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748324487"
       },
       {
         "name": "Habits",
@@ -459,7 +690,8 @@
         "group": "wellness",
         "icon": "assets/icons/weirabits.png",
         "description": "Habit formation support for routines that need simple, consistent tracking.",
-        "url": "https://weiproduct.github.io/WeiRabits/docs/index.html"
+        "url": "https://weiproduct.github.io/WeiRabits/docs/index.html",
+        "appStoreUrl": "https://apps.apple.com/app/id6748370992"
       },
       {
         "name": "AI Weather",
@@ -467,7 +699,8 @@
         "group": "utility",
         "icon": "assets/icons/weatherspro.png",
         "description": "Weather information packaged for fast everyday decisions.",
-        "url": "https://weiproduct.github.io/Weather/"
+        "url": "https://weiproduct.github.io/Weather/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748373741"
       },
       {
         "name": "AI Pomodoro Timer",
@@ -475,7 +708,8 @@
         "group": "productivity",
         "icon": "assets/icons/ai-tomato-clock.png",
         "description": "Timeboxing and focus sessions for work, study, and personal routines.",
-        "url": "https://weiproduct.github.io/AITomatoClock/"
+        "url": "https://weiproduct.github.io/AITomatoClock/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748548518"
       },
       {
         "name": "AI Vocabulary",
@@ -483,7 +717,8 @@
         "group": "learning",
         "icon": "assets/icons/ai-vocabulary.png",
         "description": "Vocabulary practice for learners who want lightweight daily study.",
-        "url": "https://weiproduct.github.io/aiwordslearning/"
+        "url": "https://weiproduct.github.io/aiwordslearning/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748568205"
       },
       {
         "name": "Food Calories",
@@ -491,7 +726,8 @@
         "group": "wellness",
         "icon": "assets/icons/ai-calories.png",
         "description": "Food and calorie awareness for simpler nutrition tracking.",
-        "url": "https://weiproduct.github.io/AICaloriesSupport-/"
+        "url": "https://weiproduct.github.io/AICaloriesSupport-/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748717022"
       },
       {
         "name": "Dating Chat",
@@ -499,7 +735,8 @@
         "group": "lifestyle",
         "icon": "assets/icons/ai-helper.png",
         "description": "Conversation support for people who want clearer, more confident messaging.",
-        "url": "https://weiproduct.github.io/aidatingchat2/"
+        "url": "https://weiproduct.github.io/aidatingchat2/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748549192"
       },
       {
         "name": "AI Platform",
@@ -507,7 +744,8 @@
         "group": "utility",
         "icon": "assets/icons/ai-platform.png",
         "description": "A compact mobile interface for accessing AI assistance in one place.",
-        "url": "https://weiproduct.github.io/ai-platform-support/"
+        "url": "https://weiproduct.github.io/ai-platform-support/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748650326"
       },
       {
         "name": "AI Smart Light",
@@ -515,7 +753,8 @@
         "group": "utility",
         "icon": "assets/icons/smart-light-master.png",
         "description": "Lighting support for content, calls, photos, and quick visual setup.",
-        "url": "https://weiproduct.github.io/AISmartlight/"
+        "url": "https://weiproduct.github.io/AISmartlight/",
+        "appStoreUrl": "https://apps.apple.com/app/id6749024443"
       },
       {
         "name": "Meditation",
@@ -523,7 +762,8 @@
         "group": "wellness",
         "icon": "assets/icons/ai-meditation.png",
         "description": "Guided calm and reflection moments built for a mobile daily routine.",
-        "url": "https://weiproduct.github.io/AIMeditation/"
+        "url": "https://weiproduct.github.io/AIMeditation/",
+        "appStoreUrl": "https://apps.apple.com/app/id6749164175"
       },
       {
         "name": "Dailymatters",
@@ -531,7 +771,8 @@
         "group": "productivity",
         "icon": "assets/icons/dailymatters.png",
         "description": "Daily tracking for thoughts, moments, and personal organization.",
-        "url": "https://weiproduct.github.io/dailymatters/"
+        "url": "https://weiproduct.github.io/dailymatters/",
+        "appStoreUrl": "https://apps.apple.com/app/id6749191628"
       },
       {
         "name": "AI Daily Matters",
@@ -539,7 +780,8 @@
         "group": "productivity",
         "icon": "assets/icons/aidailymatters.png",
         "description": "An AI-supported companion for capturing and organizing daily matters.",
-        "url": "https://weiproduct.github.io/AIDailyMatters/"
+        "url": "https://weiproduct.github.io/AIDailyMatters/",
+        "appStoreUrl": "https://apps.apple.com/app/id6749191633"
       },
       {
         "name": "AIMBTI",
@@ -547,7 +789,8 @@
         "group": "lifestyle",
         "icon": "assets/icons/aimbti.png",
         "description": "Personality reflection and AI-assisted self-understanding.",
-        "url": "https://weiproduct.github.io/MBTI/"
+        "url": "https://weiproduct.github.io/MBTI/",
+        "appStoreUrl": "https://apps.apple.com/app/id6749165632"
       },
       {
         "name": "AI Drink Water",
@@ -555,7 +798,8 @@
         "group": "wellness",
         "icon": "assets/icons/aidrinkwater.png",
         "description": "Hydration reminders and simple wellness habit support.",
-        "url": "https://weiproduct.github.io/Drinking/"
+        "url": "https://weiproduct.github.io/Drinking/",
+        "appStoreUrl": "https://apps.apple.com/app/id6749274211"
       },
       {
         "name": "AI Note",
@@ -563,7 +807,8 @@
         "group": "productivity",
         "icon": "assets/icons/ainote.png",
         "description": "Note capture and organization for ideas that need to become useful.",
-        "url": "https://weiproduct.github.io/notes/"
+        "url": "https://weiproduct.github.io/notes/",
+        "appStoreUrl": "https://apps.apple.com/app/id6749283592"
       },
       {
         "name": "AI Voice Notes",
@@ -571,7 +816,8 @@
         "group": "productivity",
         "icon": "assets/icons/ai-voice-notes.png",
         "description": "Voice capture for meetings, study, quick thoughts, and personal notes.",
-        "url": "https://weiproduct.github.io/recording/"
+        "url": "https://weiproduct.github.io/recording/",
+        "appStoreUrl": "https://apps.apple.com/app/id6748947046"
       }
     ]
     </script>
