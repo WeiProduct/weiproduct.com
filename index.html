@@ -21,15 +21,24 @@
     <meta name="twitter:image" content="https://weiproduct.com/assets/brand/social-card.png">
 
     <title>WeiProduct | Multi-Agent AI Comprehensive System</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    <!-- ADDED (round 2): Inter is now self-hosted (css/fonts.css + assets/fonts/*.woff2).
+         Fallback if self-hosting ever needs to revert:
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    -->
+    <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css?v=20260716-r2">
     <link rel="preload" href="css/style.css?v=20260713-premium" as="style">
     <link rel="stylesheet" href="css/style.css?v=20260713-premium">
+    <!-- ADDED (round 2): additive enhancement layer -->
+    <link rel="stylesheet" href="css/enhance2.css?v=20260716-r2">
     <link rel="canonical" href="https://weiproduct.com/">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="assets/icons/ai-voice-notes@2x.png" sizes="180x180">
-    <link rel="icon" href="assets/icons/ai-voice-notes.png" sizes="80x80" type="image/png">
+    <!-- ADDED (round 2): WeiProduct brand-mark favicons (was the AI Voice Notes app icon) -->
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" sizes="180x180">
 
     <script type="application/ld+json">
     {
@@ -37,7 +46,7 @@
       "@type": "Organization",
       "name": "WeiProduct",
       "url": "https://weiproduct.com/",
-      "logo": "https://weiproduct.com/assets/icons/ai-voice-notes.png",
+      "logo": "https://weiproduct.com/assets/brand/icon-512.png",
       "description": "WeiProduct is a founder-led comprehensive multi-agent AI system built from 17 focused apps across productivity, finance, learning, wellness, and daily utility.",
       "areaServed": "Worldwide",
       "telephone": "+14135888637",
@@ -51,6 +60,12 @@
         "https://github.com/WeiProduct",
         "https://www.linkedin.com/in/wei-fu-004724256/"
       ],
+      "founder": {
+        "@type": "Person",
+        "name": "Wei Fu",
+        "image": "https://weiproduct.com/assets/wei-fu-portrait.jpg",
+        "sameAs": ["https://www.linkedin.com/in/wei-fu-004724256/"]
+      },
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "founder@weiproduct.com",
@@ -220,6 +235,389 @@
       ]
     }
     </script>
+    <!-- ADDED (round 2): SoftwareApplication structured data — versions, release dates,
+         prices and categories are Apple-published data from the iTunes Lookup API
+         (snapshot: data/appstore.json). AggregateRating is only emitted for apps with
+         >= 20 Apple-reported ratings; none currently qualify, so none is included. -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Piggy Accounting",
+      "alternateName": "记账2",
+      "operatingSystem": "iOS",
+      "applicationCategory": "FinanceApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-07-14",
+      "url": "https://weiproduct.github.io/piggy-finance/",
+      "installUrl": "https://apps.apple.com/app/id6748370595",
+      "image": "https://weiproduct.com/assets/icons/piggyfinance.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Calendar",
+      "alternateName": "AI日历",
+      "operatingSystem": "iOS",
+      "applicationCategory": "ProductivityApplication",
+      "softwareVersion": "1.0.2",
+      "datePublished": "2025-07-09",
+      "url": "https://weiproduct.github.io/AICalendar/",
+      "installUrl": "https://apps.apple.com/app/id6748324487",
+      "image": "https://weiproduct.com/assets/icons/ai-calendar.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Habits",
+      "alternateName": "WeiRabits",
+      "operatingSystem": "iOS",
+      "applicationCategory": "ProductivityApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-07-10",
+      "url": "https://weiproduct.github.io/WeiRabits/docs/index.html",
+      "installUrl": "https://apps.apple.com/app/id6748370992",
+      "image": "https://weiproduct.com/assets/icons/weirabits.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Weather",
+      "alternateName": "WeathersPro",
+      "operatingSystem": "iOS",
+      "applicationCategory": "UtilitiesApplication",
+      "softwareVersion": "1.4",
+      "datePublished": "2025-07-14",
+      "url": "https://weiproduct.github.io/Weather/",
+      "installUrl": "https://apps.apple.com/app/id6748373741",
+      "image": "https://weiproduct.com/assets/icons/weatherspro.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Pomodoro Timer",
+      "alternateName": "AI番茄闹钟",
+      "operatingSystem": "iOS",
+      "applicationCategory": "ProductivityApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-07-14",
+      "url": "https://weiproduct.github.io/AITomatoClock/",
+      "installUrl": "https://apps.apple.com/app/id6748548518",
+      "image": "https://weiproduct.com/assets/icons/ai-tomato-clock.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Vocabulary",
+      "alternateName": "AI背单词",
+      "operatingSystem": "iOS",
+      "applicationCategory": "EducationalApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-07-14",
+      "url": "https://weiproduct.github.io/aiwordslearning/",
+      "installUrl": "https://apps.apple.com/app/id6748568205",
+      "image": "https://weiproduct.com/assets/icons/ai-vocabulary.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Food Calories",
+      "alternateName": "AI卡路里",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-07-21",
+      "url": "https://weiproduct.github.io/AICaloriesSupport-/",
+      "installUrl": "https://apps.apple.com/app/id6748717022",
+      "image": "https://weiproduct.com/assets/icons/ai-calories.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Dating Chat",
+      "alternateName": "AI约会助手",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "softwareVersion": "2.0.1",
+      "datePublished": "2025-07-21",
+      "url": "https://weiproduct.github.io/aidatingchat2/",
+      "installUrl": "https://apps.apple.com/app/id6748549192",
+      "image": "https://weiproduct.com/assets/icons/ai-helper.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Platform",
+      "alternateName": "AI平台",
+      "operatingSystem": "iOS",
+      "applicationCategory": "ProductivityApplication",
+      "softwareVersion": "1.0",
+      "datePublished": "2025-07-17",
+      "url": "https://weiproduct.github.io/ai-platform-support/",
+      "installUrl": "https://apps.apple.com/app/id6748650326",
+      "image": "https://weiproduct.com/assets/icons/ai-platform.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Smart Light",
+      "alternateName": "智能补光师",
+      "operatingSystem": "iOS",
+      "applicationCategory": "UtilitiesApplication",
+      "softwareVersion": "1.3.0",
+      "datePublished": "2025-07-24",
+      "url": "https://weiproduct.github.io/AISmartlight/",
+      "installUrl": "https://apps.apple.com/app/id6749024443",
+      "image": "https://weiproduct.com/assets/icons/smart-light-master.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Meditation",
+      "alternateName": "AI冥想",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-07-29",
+      "url": "https://weiproduct.github.io/AIMeditation/",
+      "installUrl": "https://apps.apple.com/app/id6749164175",
+      "image": "https://weiproduct.com/assets/icons/ai-meditation.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Dailymatters",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-07-27",
+      "url": "https://weiproduct.github.io/dailymatters/",
+      "installUrl": "https://apps.apple.com/app/id6749191628",
+      "image": "https://weiproduct.com/assets/icons/dailymatters.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Daily Matters",
+      "alternateName": "AIDailyMatters",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-07-29",
+      "url": "https://weiproduct.github.io/AIDailyMatters/",
+      "installUrl": "https://apps.apple.com/app/id6749191633",
+      "image": "https://weiproduct.com/assets/icons/aidailymatters.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AIMBTI",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-08-06",
+      "url": "https://weiproduct.github.io/MBTI/",
+      "installUrl": "https://apps.apple.com/app/id6749165632",
+      "image": "https://weiproduct.com/assets/icons/aimbti.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Drink Water",
+      "alternateName": "AIDrinkWater",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "softwareVersion": "1.1.0",
+      "datePublished": "2025-08-04",
+      "url": "https://weiproduct.github.io/Drinking/",
+      "installUrl": "https://apps.apple.com/app/id6749274211",
+      "image": "https://weiproduct.com/assets/icons/aidrinkwater.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Note",
+      "alternateName": "AI记事本",
+      "operatingSystem": "iOS",
+      "applicationCategory": "ProductivityApplication",
+      "softwareVersion": "1.0",
+      "datePublished": "2025-08-04",
+      "url": "https://weiproduct.github.io/notes/",
+      "installUrl": "https://apps.apple.com/app/id6749283592",
+      "image": "https://weiproduct.com/assets/icons/ainote.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AI Voice Notes",
+      "alternateName": "AI录音笔记",
+      "operatingSystem": "iOS",
+      "applicationCategory": "ProductivityApplication",
+      "softwareVersion": "1.2",
+      "datePublished": "2025-08-03",
+      "url": "https://weiproduct.github.io/recording/",
+      "installUrl": "https://apps.apple.com/app/id6748947046",
+      "image": "https://weiproduct.com/assets/icons/ai-voice-notes.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "WeiProduct",
+        "url": "https://weiproduct.com/"
+      }
+    }
+  ]
+}
+    </script>
     <!-- ADDED: set theme before first paint to avoid a flash (localStorage, else prefers-color-scheme) -->
     <script>
       (function () {
@@ -255,6 +653,11 @@
             <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18.5" r="2.5"/><circle cx="18" cy="5.5" r="2.5"/><path d="M8.5 18.5H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.5"/></symbol>
             <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.6v5.3c0 4.4-3 8-7 10-4-2-7-5.6-7-10V5.6L12 3z"/><path d="m9 12 2 2 4-4.2"/></symbol>
             <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 14v3M12.5 10v7M17 6v11"/></symbol>
+            <!-- ADDED (round 2): lock, eye-off, document, sparkle-check icons -->
+            <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.4"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></symbol>
+            <symbol id="i-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.1A9.8 9.8 0 0 1 12 5c5 0 8.6 3.7 10 7-.5 1.2-1.3 2.4-2.3 3.5M6.3 6.3C4.3 7.7 2.8 9.6 2 12c1.4 3.3 5 7 10 7 1.7 0 3.2-.4 4.6-1.1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+            <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h8l4 4V21.5H6V2.5z"/><path d="M14 2.5v4h4"/><path d="M9 12h6M9 15.5h6M9 8.5h2"/></symbol>
+            <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.4 2.6 2.6 5-5.4"/></symbol>
         </defs>
     </svg>
     <nav class="navbar">
@@ -382,6 +785,57 @@
             </div>
         </section>
 
+        <!-- ADDED (round 2): scenario walkthrough — one day, one system -->
+        <section id="scenario" class="scenario">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Scenario walkthrough</p>
+                    <h2>One day, one system.</h2>
+                    <p>
+                        Follow one person through a single day. At each moment a different agent contributes its signal, and every signal lands in the same personal context layer.
+                    </p>
+                </div>
+                <div class="scenario-shell" id="scenarioShell">
+                    <div class="scenario-steps" id="scenarioSteps" aria-live="polite">
+                        <article class="scenario-step is-active" data-agents="AI Calendar,AI Weather">
+                            <span class="scenario-time">Morning</span>
+                            <h3>Plan the day</h3>
+                            <p>AI Calendar drafts the schedule while AI Weather shapes the commute, the workout window, and what to wear.</p>
+                        </article>
+                        <article class="scenario-step" data-agents="AI Pomodoro Timer">
+                            <span class="scenario-time">Focus block</span>
+                            <h3>Protect deep work</h3>
+                            <p>AI Pomodoro Timer runs the focus sessions, so real attention patterns become part of the day's context instead of guesswork.</p>
+                        </article>
+                        <article class="scenario-step" data-agents="Food Calories,Piggy Accounting">
+                            <span class="scenario-time">Lunch</span>
+                            <h3>Log the meal and the money</h3>
+                            <p>Food Calories captures nutrition in seconds and Piggy Accounting books the spend — two different life signals from one moment.</p>
+                        </article>
+                        <article class="scenario-step" data-agents="Dailymatters,Meditation">
+                            <span class="scenario-time">Evening</span>
+                            <h3>Reflect and wind down</h3>
+                            <p>Dailymatters keeps the day's record and Meditation closes it calmly, so tomorrow's plan starts from better context.</p>
+                        </article>
+                    </div>
+                    <div class="scenario-hub">
+                        <div class="scenario-agents" id="scenarioAgents" aria-label="Agents contributing in this scenario"></div>
+                        <div class="scenario-flow" aria-hidden="true">
+                            <span class="scenario-flow-line"></span>
+                            <span class="scenario-flow-hub">Personal context layer</span>
+                            <span class="scenario-flow-line"></span>
+                        </div>
+                    </div>
+                    <div class="scenario-controls">
+                        <button class="scenario-btn" id="scenarioPrev" type="button">&larr; Previous</button>
+                        <div class="scenario-dots" id="scenarioDots" role="group" aria-label="Scenario steps"></div>
+                        <button class="scenario-btn" id="scenarioNext" type="button">Next &rarr;</button>
+                    </div>
+                </div>
+                <p class="scenario-note">Illustrative scenario — not recorded product output.</p>
+            </div>
+        </section>
+
         <section id="products" class="products">
             <div class="container">
                 <div class="section-heading">
@@ -414,7 +868,10 @@
                     <h2>17 agents shipped, in build order.</h2>
                     <p>
                         The strongest early signal is speed. Below is the portfolio in App Store build order; each node links to its live app.
-                        <span class="placeholder-tag">{{ 待填：真实发布时间线（起止日期）}}</span>
+                        <!-- 填入真实数据后移除 hidden -->
+                        <span class="placeholder-tag" hidden>{{ 待填：真实发布时间线（起止日期）}}</span>
+                        <!-- ADDED (round 2): real first-release date range, rendered from the committed Apple snapshot -->
+                        <span class="velocity-dates" id="velocityDates"></span>
                     </p>
                 </div>
                 <!-- {{ 待填：真实发布时间线 }} — build order is derived from real App Store IDs; add verified ship dates or a date range if desired. Do NOT invent dates. -->
@@ -437,13 +894,24 @@
                         <strong>1</strong>
                         <span>Shared agent + context infrastructure</span>
                     </div>
-                    <div class="traction-stat traction-fill">
+                    <!-- 填入真实数据后移除 hidden -->
+                    <div class="traction-stat traction-fill" hidden>
                         <span class="ui-icon"><svg class="ui-svg"><use href="#i-chart"></use></svg></span>
                         <strong class="placeholder-tag">{{ 待填：真实数据 }}</strong>
                         <span>Downloads / MAU (owner to fill)</span>
                     </div>
                 </div>
                 <!-- {{ 待填：真实数据 }} — replace the placeholder stat with verified downloads / MAU, or remove that tile. Do NOT invent numbers. -->
+
+                <!-- ADDED (round 2): most recently updated apps — versions and dates are
+                     Apple-published data from the committed snapshot (data/appstore.json) -->
+                <div class="recent-ships" aria-label="Most recently updated apps">
+                    <div class="recent-ships-head">
+                        <h3>Recent ships</h3>
+                        <p>The six most recently updated agents. Versions and dates published by Apple<span id="recentShipsFetched"></span>.</p>
+                    </div>
+                    <ol class="recent-ships-grid" id="recentShips"></ol>
+                </div>
             </div>
         </section>
 
@@ -527,11 +995,119 @@
             </div>
         </section>
 
+        <!-- ADDED (round 2): how it's built — three-tier architecture -->
+        <section id="architecture" class="architecture">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">How it's built</p>
+                    <h2>One architecture, reused seventeen times.</h2>
+                    <p>
+                        Every agent ships on the same three-tier stack, so a new app is mostly product work — not new infrastructure. Client data stays on the device; model access is brokered server-side.
+                    </p>
+                </div>
+                <div class="arch-diagram-wrap">
+                    <svg class="arch-svg" viewBox="0 0 960 660" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Three-tier architecture diagram: SwiftUI clients with on-device data call hardened per-app serverless proxies, which broker access to the model layer (OpenAI, Whisper, Gemini). API keys never ship in the app binaries.">
+                        <!-- Tier 1: clients -->
+                        <g>
+                            <rect class="arch-tier-box" x="40" y="28" width="880" height="150" rx="18"/>
+                            <rect class="arch-accent" x="40" y="28" width="6" height="150" fill="#2563eb"/>
+                            <text class="arch-title" x="76" y="80">SwiftUI clients — 17 focused iOS apps</text>
+                            <text class="arch-sub" x="76" y="116">Personal data lives on the device · shared design system across the portfolio</text>
+                            <rect class="arch-chip" x="76" y="134" width="170" height="30" rx="15"/>
+                            <text class="arch-chip-text" x="94" y="154">On-device data</text>
+                            <rect class="arch-chip" x="258" y="134" width="196" height="30" rx="15"/>
+                            <text class="arch-chip-text" x="276" y="154">No keys in binaries</text>
+                        </g>
+                        <!-- Flow 1 -->
+                        <g>
+                            <line class="arch-arrow" x1="480" y1="184" x2="480" y2="248"/>
+                            <path class="arch-arrow-head" d="M480 260 l-8 -14 h16 z"/>
+                            <text class="arch-flow-label" x="500" y="228">HTTPS — requests only, never credentials</text>
+                        </g>
+                        <!-- Tier 2: proxies -->
+                        <g>
+                            <rect class="arch-tier-box" x="40" y="264" width="880" height="150" rx="18"/>
+                            <rect class="arch-accent" x="40" y="264" width="6" height="150" fill="#0f766e"/>
+                            <text class="arch-title" x="76" y="316">Hardened serverless proxies — one per app</text>
+                            <text class="arch-sub" x="76" y="352">API keys held server-side and never shipped in binaries · scoped per agent</text>
+                            <rect class="arch-chip" x="76" y="370" width="160" height="30" rx="15"/>
+                            <text class="arch-chip-text" x="94" y="390">Keys isolated</text>
+                            <rect class="arch-chip" x="248" y="370" width="184" height="30" rx="15"/>
+                            <text class="arch-chip-text" x="266" y="390">Per-app scoping</text>
+                        </g>
+                        <!-- Flow 2 -->
+                        <g>
+                            <line class="arch-arrow" x1="480" y1="420" x2="480" y2="484"/>
+                            <path class="arch-arrow-head" d="M480 496 l-8 -14 h16 z"/>
+                            <text class="arch-flow-label" x="500" y="464">Scoped model calls</text>
+                        </g>
+                        <!-- Tier 3: models -->
+                        <g>
+                            <rect class="arch-tier-box" x="40" y="500" width="880" height="132" rx="18"/>
+                            <rect class="arch-accent" x="40" y="500" width="6" height="132" fill="#7c3aed"/>
+                            <text class="arch-title" x="76" y="552">Model layer</text>
+                            <text class="arch-sub" x="76" y="588">OpenAI · Whisper · Gemini — swappable per agent as models improve</text>
+                        </g>
+                    </svg>
+                </div>
+                <ul class="arch-facts" aria-label="Shared infrastructure facts">
+                    <li>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-layers"></use></svg></span>
+                        One reusable design system across all 17 apps
+                    </li>
+                    <li>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-rocket"></use></svg></span>
+                        Releases automated through the App Store Connect API
+                    </li>
+                    <li>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-grid"></use></svg></span>
+                        A dedicated support site for every app
+                    </li>
+                    <li>
+                        <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-check"></use></svg></span>
+                        Automated test suites guard each agent
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ADDED (round 2): privacy trust band -->
+        <section id="trust" class="trust" aria-label="Privacy principles">
+            <div class="container trust-band">
+                <div class="trust-item">
+                    <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-shield"></use></svg></span>
+                    <div>
+                        <strong>On-device by default</strong>
+                        <span>Personal data lives in each app on the phone, not in a company data lake.</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-lock"></use></svg></span>
+                    <div>
+                        <strong>Keys never ship in binaries</strong>
+                        <span>Every AI call routes through a hardened per-app proxy; API keys stay server-side.</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-eyeoff"></use></svg></span>
+                    <div>
+                        <strong>No ads, no tracking</strong>
+                        <span>No ad networks and no third-party tracking SDKs across the portfolio.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="founder" class="studio founder">
             <div class="container studio-layout">
                 <div>
                     <p class="eyebrow">Founder edge</p>
                     <h2>Builder speed with technical, AI, and market range.</h2>
+                    <!-- ADDED (round 2): founder portrait (owner-supplied photo) -->
+                    <figure class="founder-portrait">
+                        <img src="assets/wei-fu-portrait.jpg" alt="Wei Fu, founder" width="1000" height="1000" loading="lazy" decoding="async">
+                        <figcaption>Wei Fu — Founder, WeiProduct</figcaption>
+                    </figure>
                 </div>
                 <div class="studio-copy">
                     <p>
@@ -604,6 +1180,13 @@
                     <p>
                         WeiProduct is open to conversations with investors, accelerators, distribution partners, and operators who understand multi-agent AI, mobile products, and fast product iteration.
                     </p>
+                    <!-- ADDED (round 2): print-first investor one-pager -->
+                    <div class="contact-onepager">
+                        <a class="btn btn-secondary" href="onepager.html">
+                            <span aria-hidden="true" class="ui-icon"><svg class="ui-svg"><use href="#i-doc"></use></svg></span>
+                            Download one-pager (PDF)
+                        </a>
+                    </div>
                 </div>
                 <div class="contact-card">
                     <a href="mailto:founder@weiproduct.com" class="contact-method">
@@ -821,6 +1404,325 @@
       }
     ]
     </script>
+    <!-- ADDED (round 2): committed snapshot of real Apple App Store data
+         (source: iTunes Lookup API via scripts/fetch-appstore-data.mjs; rendered
+         by js/enhance2.js — no runtime dependency on Apple). -->
+    <script type="application/json" id="appstoreData">
+{
+  "source": "https://itunes.apple.com/lookup (Apple iTunes Lookup API)",
+  "fetchedAt": "2026-07-16T21:09:09Z",
+  "apps": [
+    {
+      "trackId": 6748370595,
+      "siteName": "Piggy Accounting",
+      "appleName": "记账2",
+      "version": "1.2",
+      "releaseDate": "2025-07-14T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-15T07:41:08Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/%E8%AE%B0%E8%B4%A62/id6748370595?uo=4",
+      "primaryGenreName": "Finance",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/66/3f/54/663f5416-f82e-28cf-d2bf-0fce33513051/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748324487,
+      "siteName": "AI Calendar",
+      "appleName": "AI日历",
+      "version": "1.0.2",
+      "releaseDate": "2025-07-09T07:00:00Z",
+      "currentVersionReleaseDate": "2025-07-31T13:34:08Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E6%97%A5%E5%8E%86/id6748324487?uo=4",
+      "primaryGenreName": "Productivity",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.5",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/62/d6/45/62d6455d-8981-99f6-9ef1-509d4a5d2fe2/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748370992,
+      "siteName": "Habits",
+      "appleName": "WeiRabits",
+      "version": "1.2",
+      "releaseDate": "2025-07-10T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-14T18:10:26Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/weirabits/id6748370992?uo=4",
+      "primaryGenreName": "Productivity",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "17.6",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/52/cd/e8/52cde875-9213-182f-9802-c0bfe9c4a3be/AppIcon-0-0-1x_U007epad-0-1-P3-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748373741,
+      "siteName": "AI Weather",
+      "appleName": "WeathersPro",
+      "version": "1.4",
+      "releaseDate": "2025-07-14T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-13T17:40:36Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/weatherspro/id6748373741?uo=4",
+      "primaryGenreName": "Weather",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "17.6",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/ff/ef/4cffefd7-93b7-8a50-33af-5fc7c23d5f8c/AppIcon-0-0-1x_U007epad-0-8-0-P3-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748548518,
+      "siteName": "AI Pomodoro Timer",
+      "appleName": "AI番茄闹钟",
+      "version": "1.2",
+      "releaseDate": "2025-07-14T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-14T18:11:47Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E7%95%AA%E8%8C%84%E9%97%B9%E9%92%9F/id6748548518?uo=4",
+      "primaryGenreName": "Productivity",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.3",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1d/6c/54/1d6c54af-595c-37bc-9e3a-cd3f0df74a9b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748568205,
+      "siteName": "AI Vocabulary",
+      "appleName": "AI背单词",
+      "version": "1.2",
+      "releaseDate": "2025-07-14T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-14T15:56:25Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E8%83%8C%E5%8D%95%E8%AF%8D/id6748568205?uo=4",
+      "primaryGenreName": "Education",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.5",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/25/da/0b/25da0b33-4b06-f412-86f2-3102d14cef0d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748717022,
+      "siteName": "Food Calories",
+      "appleName": "AI卡路里",
+      "version": "1.2",
+      "releaseDate": "2025-07-21T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-15T06:50:57Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E5%8D%A1%E8%B7%AF%E9%87%8C/id6748717022?uo=4",
+      "primaryGenreName": "Lifestyle",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.0",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b8/04/2f/b8042f61-f563-c677-8a8f-eec955bf75cb/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748549192,
+      "siteName": "Dating Chat",
+      "appleName": "AI约会助手",
+      "version": "2.0.1",
+      "releaseDate": "2025-07-21T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-14T17:11:55Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E7%BA%A6%E4%BC%9A%E5%8A%A9%E6%89%8B/id6748549192?uo=4",
+      "primaryGenreName": "Lifestyle",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.5",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/63/9b/03/639b03cb-1304-6282-eb1d-e3819d7680ec/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748650326,
+      "siteName": "AI Platform",
+      "appleName": "AI平台",
+      "version": "1.0",
+      "releaseDate": "2025-07-17T07:00:00Z",
+      "currentVersionReleaseDate": "2025-07-17T14:55:14Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E5%B9%B3%E5%8F%B0/id6748650326?uo=4",
+      "primaryGenreName": "Productivity",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "17.0",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/fd/77/eb/fd77ebf9-31a8-851e-5737-d1d8a7fb5d37/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6749024443,
+      "siteName": "AI Smart Light",
+      "appleName": "智能补光师",
+      "version": "1.3.0",
+      "releaseDate": "2025-07-24T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-15T06:41:37Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/%E6%99%BA%E8%83%BD%E8%A1%A5%E5%85%89%E5%B8%88/id6749024443?uo=4",
+      "primaryGenreName": "Utilities",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.5",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/79/65/36/79653664-a2f2-3c34-33ef-d046b1d34ee9/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6749164175,
+      "siteName": "Meditation",
+      "appleName": "AI冥想",
+      "version": "1.2",
+      "releaseDate": "2025-07-29T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-15T07:26:44Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E5%86%A5%E6%83%B3/id6749164175?uo=4",
+      "primaryGenreName": "Lifestyle",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "17.0",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/db/07/0f/db070f5b-19ae-dbe7-acea-481eebf9d85f/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6749191628,
+      "siteName": "Dailymatters",
+      "appleName": "Dailymatters",
+      "version": "1.2",
+      "releaseDate": "2025-07-27T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-14T18:12:19Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/dailymatters/id6749191628?uo=4",
+      "primaryGenreName": "Lifestyle",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "17.0",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d3/91/b3/d391b384-5b68-7a6b-802b-0e9f322a3085/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6749191633,
+      "siteName": "AI Daily Matters",
+      "appleName": "AIDailyMatters",
+      "version": "1.2",
+      "releaseDate": "2025-07-29T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-14T18:14:48Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/aidailymatters/id6749191633?uo=4",
+      "primaryGenreName": "Lifestyle",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "16.0",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/59/e3/3b/59e33b15-cb8a-c517-ad0b-7f77ccf2a15a/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6749165632,
+      "siteName": "AIMBTI",
+      "appleName": "AIMBTI",
+      "version": "1.2",
+      "releaseDate": "2025-08-06T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-14T18:16:17Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/aimbti/id6749165632?uo=4",
+      "primaryGenreName": "Lifestyle",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.5",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b9/bb/92/b9bb92a9-6746-765b-8ac3-98655961290b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6749274211,
+      "siteName": "AI Drink Water",
+      "appleName": "AIDrinkWater",
+      "version": "1.1.0",
+      "releaseDate": "2025-08-04T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-13T17:38:52Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/aidrinkwater/id6749274211?uo=4",
+      "primaryGenreName": "Lifestyle",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.5",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/7f/90/bd7f9019-563f-1308-11cc-85b4578fc375/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6749283592,
+      "siteName": "AI Note",
+      "appleName": "AI记事本",
+      "version": "1.0",
+      "releaseDate": "2025-08-04T07:00:00Z",
+      "currentVersionReleaseDate": "2025-08-05T04:06:54Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E8%AE%B0%E4%BA%8B%E6%9C%AC/id6749283592?uo=4",
+      "primaryGenreName": "Productivity",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.5",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/05/1a/1a/051a1aff-8d3a-77ed-86da-5a9d338ef5fa/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+    },
+    {
+      "trackId": 6748947046,
+      "siteName": "AI Voice Notes",
+      "appleName": "AI录音笔记",
+      "version": "1.2",
+      "releaseDate": "2025-08-03T07:00:00Z",
+      "currentVersionReleaseDate": "2026-07-14T18:15:09Z",
+      "averageUserRating": 0,
+      "userRatingCount": 0,
+      "screenshotUrls": [],
+      "trackViewUrl": "https://apps.apple.com/us/app/ai%E5%BD%95%E9%9F%B3%E7%AC%94%E8%AE%B0/id6748947046?uo=4",
+      "primaryGenreName": "Productivity",
+      "formattedPrice": "Free",
+      "price": 0.0,
+      "currency": "USD",
+      "minimumOsVersion": "18.5",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/89/2f/85892ff1-5d54-3c0a-abd6-97072a43e03c/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg"
+    }
+  ]
+}
+    </script>
     <script src="js/main.js?v=20260713-premium" defer></script>
+    <!-- ADDED (round 2): additive enhancement script -->
+    <script src="js/enhance2.js?v=20260716-r2" defer></script>
 </body>
 </html>

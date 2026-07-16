@@ -1,0 +1,903 @@
+/* ================================================================
+   ADDED (round 2) — additive enhancement layer.
+   New sections: scenario walkthrough, architecture, trust band,
+   recent ships, App Store data render, one-pager link, diagram v2
+   interactivity, craft bundle. No existing rules are modified;
+   everything here is appended on top of css/style.css.
+   ================================================================ */
+
+/* ---- Sanctioned fix: the owner-fill placeholders are hidden until
+       real data is filled in. The guard below is required because
+       .placeholder-tag sets display:inline-block, which would
+       otherwise override the [hidden] attribute. ---- */
+[hidden] {
+    display: none !important;
+}
+
+/* ---- Sanctioned fix: traction band collapses to 3 tiles while the
+       owner-fill tile is hidden (remove `hidden` in index.html to
+       return to 4 tiles automatically) ---- */
+.traction-band:has(> .traction-fill[hidden]) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* ---- Velocity: real Apple release-date caption ---- */
+.velocity-dates {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--teal);
+    font-size: 0.92rem;
+    font-weight: 750;
+}
+
+.velocity-dates:empty {
+    display: none;
+}
+
+/* ---- Recent ships (real Apple version + release-date data) ---- */
+.recent-ships {
+    margin-top: 34px;
+}
+
+.recent-ships-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    margin-bottom: 14px;
+}
+
+.recent-ships-head h3 {
+    font-size: 1.25rem;
+}
+
+.recent-ships-head p {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.recent-ships-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+    list-style: none;
+}
+
+.recent-ship {
+    min-width: 0;
+}
+
+.recent-ship > a {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    background: var(--card);
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.recent-ship > a:hover {
+    transform: translateY(-2px);
+    border-color: #c3d5f2;
+}
+
+.recent-ship img {
+    width: 44px;
+    height: 44px;
+    border-radius: 24%;
+    box-shadow: 0 8px 16px -8px rgba(15, 23, 42, 0.3);
+}
+
+.recent-ship-name {
+    font-size: 0.86rem;
+    font-weight: 750;
+    line-height: 1.25;
+}
+
+.recent-ship-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+}
+
+.recent-ship-version {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 2px 8px;
+    background: #eff6ff;
+    color: var(--blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.recent-ship-date {
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- Real App Store rating badge (only rendered when Apple reports
+       userRatingCount >= 20; no invented numbers, ever) ---- */
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 26px;
+    border-radius: 999px;
+    padding: 3px 9px;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    font-size: 0.76rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.rating-badge svg {
+    width: 12px;
+    height: 12px;
+    display: block;
+}
+
+/* ---- "View screens" lightbox (Apple official screenshots; the
+       trigger only renders when the snapshot contains URLs) ---- */
+.screens-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 11px;
+    background: #ffffff;
+    color: var(--ink);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 750;
+    transition: border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.screens-btn:hover {
+    border-color: #bfdbfe;
+    color: var(--blue);
+    box-shadow: var(--shadow-soft);
+}
+
+.screens-dialog {
+    max-width: min(1080px, calc(100vw - 32px));
+    width: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0;
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: var(--shadow);
+}
+
+.screens-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.62);
+    backdrop-filter: blur(4px);
+}
+
+.screens-dialog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+}
+
+.screens-dialog-head h3 {
+    font-size: 1.05rem;
+}
+
+.screens-dialog-head p {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.screens-close {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.screens-strip {
+    display: flex;
+    align-items: flex-start; /* no vertical stretch on portrait shots */
+    gap: 14px;
+    overflow-x: auto;
+    padding: 18px 20px 22px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.screens-strip img {
+    width: 220px;
+    max-width: 60vw;
+    height: auto;
+    flex: 0 0 auto;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-soft);
+}
+
+/* ---- Scenario walkthrough: one day, one system ---- */
+.scenario {
+    background: rgba(255, 255, 255, 0.82);
+}
+
+.scenario-shell {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+    box-shadow: var(--shadow-soft);
+    padding: 26px 26px 22px;
+}
+
+.scenario-steps {
+    position: relative;
+}
+
+.scenario-step {
+    display: none;
+    max-width: 720px;
+}
+
+.scenario-step.is-active {
+    display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .scenario-step.is-active {
+        animation: scenario-in 0.35s ease;
+    }
+}
+
+@keyframes scenario-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.scenario-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border-radius: 999px;
+    padding: 4px 12px;
+    background: #eff6ff;
+    color: var(--blue);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.scenario-time::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.scenario-step h3 {
+    margin-top: 14px;
+    font-size: 1.5rem;
+    line-height: 1.15;
+}
+
+.scenario-step p {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 1.02rem;
+}
+
+/* mini hub echo: the day's agents, active ones lit */
+.scenario-hub {
+    margin-top: 24px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+}
+
+.scenario-agents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.scenario-agent {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 13px 5px 6px;
+    background: #ffffff;
+    color: var(--muted);
+    font-size: 0.84rem;
+    font-weight: 750;
+    opacity: 0.5;
+    filter: saturate(0.2);
+    transition: opacity 0.3s ease, filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.scenario-agent img {
+    width: 26px;
+    height: 26px;
+    border-radius: 24%;
+}
+
+.scenario-agent.is-lit {
+    opacity: 1;
+    filter: none;
+    border-color: #93c5fd;
+    color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12), var(--shadow-soft);
+}
+
+.scenario-flow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.scenario-flow-line {
+    flex: 1 1 auto;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--teal));
+    opacity: 0.4;
+}
+
+.scenario-flow-hub {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border-radius: 999px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.scenario-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.scenario-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 8px 15px;
+    background: #ffffff;
+    color: var(--ink);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 750;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+}
+
+.scenario-btn:hover:not(:disabled) {
+    border-color: #bfdbfe;
+    color: var(--blue);
+    box-shadow: var(--shadow-soft);
+}
+
+.scenario-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.scenario-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.scenario-dot {
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: #e2e8f0;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.scenario-dot[aria-current="true"] {
+    background: var(--blue);
+    border-color: var(--blue);
+    transform: scale(1.25);
+}
+
+.scenario-note {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 0.84rem;
+    font-style: italic;
+}
+
+/* ---- Architecture: how it's built ---- */
+.architecture {
+    background: rgba(255, 255, 255, 0.82);
+}
+
+.arch-diagram-wrap {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+    box-shadow: var(--shadow-soft);
+    padding: 22px 18px 12px;
+}
+
+.arch-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.arch-tier-box {
+    fill: var(--card);
+    stroke: var(--line);
+    stroke-width: 1.5;
+}
+
+.arch-accent {
+    rx: 3;
+}
+
+.arch-title {
+    fill: var(--ink);
+    font-weight: 800;
+    font-size: 27px;
+    letter-spacing: -0.4px;
+}
+
+.arch-sub {
+    fill: var(--muted);
+    font-weight: 600;
+    font-size: 19px;
+}
+
+.arch-flow-label {
+    fill: var(--muted);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.arch-arrow {
+    stroke: var(--blue);
+    stroke-width: 2.5;
+    fill: none;
+    opacity: 0.55;
+}
+
+.arch-arrow-head {
+    fill: var(--blue);
+    opacity: 0.55;
+}
+
+.arch-chip {
+    fill: rgba(37, 99, 235, 0.08);
+    stroke: rgba(37, 99, 235, 0.25);
+}
+
+.arch-chip-text {
+    fill: var(--blue);
+    font-weight: 750;
+    font-size: 17px;
+}
+
+.arch-facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+    list-style: none;
+}
+
+.arch-facts li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 13px 15px;
+    background: var(--card);
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.arch-facts .ui-icon {
+    flex: 0 0 auto;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: #eff6ff;
+    color: var(--blue);
+}
+
+/* ---- Privacy trust band ---- */
+.trust {
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: rgba(246, 248, 251, 0.88);
+}
+
+.trust-band {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px 28px;
+}
+
+.trust-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.trust-item .ui-icon {
+    flex: 0 0 auto;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: var(--blue);
+}
+
+.trust-item strong {
+    display: block;
+    font-size: 0.98rem;
+    line-height: 1.3;
+}
+
+.trust-item span {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+/* ---- One-pager link in #contact ---- */
+.contact-onepager {
+    margin-top: 22px;
+}
+
+.contact-onepager .btn {
+    width: auto;
+}
+
+/* ---- Diagram v2: legend hover/focus highlight + click filter ---- */
+.cl-legend li.cl-legend-interactive {
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 5px 12px;
+    transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.cl-legend li.cl-legend-interactive:hover,
+.cl-legend li.cl-legend-interactive:focus-visible {
+    border-color: var(--line);
+    background: var(--card);
+    color: var(--ink);
+}
+
+.cl-svg .cl-node,
+.cl-svg .cl-line,
+.cl-svg .cl-clabel {
+    transition: opacity 0.25s ease;
+}
+
+.cl-svg .cl-dim {
+    opacity: 0.13 !important;
+}
+
+.cl-legend-hint {
+    margin-top: 6px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+/* ================================================================
+   Founder portrait (owner-supplied photo, #founder section)
+   The .studio section keeps its fixed dark surface in both themes,
+   so one style set covers light and dark.
+   ================================================================ */
+.founder-portrait {
+    margin: 30px 0 0;
+    max-width: 300px;
+}
+
+.founder-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow:
+        0 28px 56px -24px rgba(2, 6, 23, 0.85),
+        0 0 0 1px rgba(148, 163, 184, 0.22);
+}
+
+.founder-portrait figcaption {
+    margin-top: 12px;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+}
+
+/* ================================================================
+   Craft bundle
+   ================================================================ */
+::selection {
+    background: rgba(37, 99, 235, 0.24);
+    color: inherit;
+}
+
+summary:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.34);
+    outline-offset: 3px;
+}
+
+.btn:active,
+.filter-chip:active,
+.scenario-btn:active,
+.screens-btn:active,
+.theme-toggle:active,
+.nav-toggle:active {
+    transform: translateY(0) scale(0.985);
+}
+
+section[id],
+[id] {
+    scroll-margin-top: 92px;
+}
+
+/* ================================================================
+   Responsive
+   ================================================================ */
+@media (max-width: 1040px) {
+    .traction-band:has(> .traction-fill[hidden]) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .recent-ships-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .arch-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .trust-band {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .traction-band:has(> .traction-fill[hidden]) {
+        grid-template-columns: 1fr;
+    }
+
+    .recent-ships-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .arch-facts {
+        grid-template-columns: 1fr;
+    }
+
+    .scenario-shell {
+        padding: 20px 16px 16px;
+    }
+
+    .scenario-controls {
+        flex-wrap: wrap;
+    }
+
+    .scenario-btn {
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+
+    .scenario-dots {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 4px;
+    }
+
+    /* keep sizes within the fixed SVG boxes — larger bumps overflow */
+    .arch-title {
+        font-size: 31px;
+    }
+
+    .arch-sub {
+        font-size: 21px;
+    }
+
+    .arch-flow-label {
+        font-size: 19px;
+    }
+
+    .screens-strip img {
+        width: 180px;
+    }
+
+    .contact-onepager .btn {
+        width: 100%;
+    }
+
+    .founder-portrait {
+        max-width: 260px;
+    }
+}
+
+/* ================================================================
+   Dark-mode overrides for round-2 additions
+   ================================================================ */
+:root[data-theme="dark"] ::selection {
+    background: rgba(96, 165, 250, 0.35);
+}
+
+:root[data-theme="dark"] .recent-ship > a,
+:root[data-theme="dark"] .arch-facts li {
+    background: #101d31;
+    border-color: var(--line);
+}
+
+:root[data-theme="dark"] .recent-ship > a:hover {
+    border-color: #3b5b86;
+}
+
+:root[data-theme="dark"] .recent-ship-version {
+    background: rgba(37, 99, 235, 0.18);
+    color: #93c5fd;
+}
+
+:root[data-theme="dark"] .rating-badge {
+    background: rgba(180, 83, 9, 0.18);
+    border-color: rgba(253, 230, 138, 0.35);
+    color: #fcd34d;
+}
+
+:root[data-theme="dark"] .screens-btn,
+:root[data-theme="dark"] .scenario-btn,
+:root[data-theme="dark"] .scenario-agent {
+    background: #14213a;
+    border-color: var(--line);
+    color: #c2cfe2;
+}
+
+:root[data-theme="dark"] .screens-btn:hover,
+:root[data-theme="dark"] .scenario-btn:hover:not(:disabled) {
+    border-color: #3b5b86;
+    color: #93c5fd;
+}
+
+:root[data-theme="dark"] .screens-dialog {
+    background: #101d31;
+    border-color: var(--line);
+}
+
+:root[data-theme="dark"] .screens-close {
+    border-color: var(--line);
+    color: var(--ink);
+}
+
+:root[data-theme="dark"] .scenario,
+:root[data-theme="dark"] .architecture {
+    background: rgba(13, 22, 38, 0.5);
+}
+
+:root[data-theme="dark"] .scenario-shell,
+:root[data-theme="dark"] .arch-diagram-wrap {
+    background: linear-gradient(180deg, #101d31 0%, #0d1929 100%);
+    border-color: var(--line);
+}
+
+:root[data-theme="dark"] .scenario-time {
+    background: rgba(37, 99, 235, 0.18);
+    color: #93c5fd;
+}
+
+:root[data-theme="dark"] .scenario-agent.is-lit {
+    border-color: #3b5b86;
+    color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.16), var(--shadow-soft);
+}
+
+:root[data-theme="dark"] .scenario-dot {
+    background: #26374f;
+    border-color: #26374f;
+}
+
+:root[data-theme="dark"] .scenario-dot[aria-current="true"] {
+    background: #60a5fa;
+    border-color: #60a5fa;
+}
+
+:root[data-theme="dark"] .trust {
+    background: rgba(9, 15, 27, 0.55);
+    border-color: var(--line);
+}
+
+:root[data-theme="dark"] .trust-item .ui-icon,
+:root[data-theme="dark"] .arch-facts .ui-icon {
+    background: rgba(37, 99, 235, 0.18);
+    color: #93c5fd;
+}
+
+:root[data-theme="dark"] .arch-chip {
+    fill: rgba(96, 165, 250, 0.12);
+    stroke: rgba(96, 165, 250, 0.3);
+}
+
+:root[data-theme="dark"] .arch-chip-text {
+    fill: #93c5fd;
+}
+
+:root[data-theme="dark"] .arch-arrow {
+    stroke: #60a5fa;
+}
+
+:root[data-theme="dark"] .arch-arrow-head {
+    fill: #60a5fa;
+}
+
+:root[data-theme="dark"] .cl-legend li.cl-legend-interactive:hover,
+:root[data-theme="dark"] .cl-legend li.cl-legend-interactive:focus-visible {
+    background: #14213a;
+    border-color: #3b5b86;
+}

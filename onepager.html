@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="WeiProduct investor one-pager: a founder-led multi-agent AI system of 17 focused iOS apps feeding one personal context layer.">
+    <title>WeiProduct — Investor One-Pager</title>
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" sizes="180x180">
+    <link rel="stylesheet" href="css/fonts.css?v=20260716-r2">
+    <style>
+        /* Print-first one-pager. Forced light — ignores OS dark mode by design. */
+        :root {
+            color-scheme: only light;
+            --ink: #0f172a;
+            --muted: #526071;
+            --line: #e3e8ef;
+            --blue: #2563eb;
+            --teal: #0f766e;
+            --violet: #7c3aed;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { background: #eef2f7; }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--ink);
+            line-height: 1.45;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .sheet {
+            max-width: 8.5in;
+            margin: 24px auto;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: 0 18px 50px rgba(15, 23, 42, 0.10);
+            padding: 0.55in 0.6in;
+        }
+
+        .print-bar {
+            max-width: 8.5in;
+            margin: 20px auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .print-bar a { color: var(--muted); font-size: 0.88rem; text-decoration: none; font-weight: 650; }
+        .print-bar a:hover { color: var(--blue); }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 0;
+            border-radius: 10px;
+            padding: 11px 18px;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            color: #ffffff;
+            font: inherit;
+            font-size: 0.92rem;
+            font-weight: 750;
+            cursor: pointer;
+            box-shadow: 0 10px 24px -12px rgba(37, 99, 235, 0.6);
+        }
+
+        .print-btn:hover { filter: brightness(1.06); }
+
+        header.op-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .op-brand { display: flex; align-items: center; gap: 12px; }
+        .op-brand img { width: 44px; height: 44px; }
+        .op-brand strong { font-size: 1.5rem; font-weight: 850; letter-spacing: -0.02em; }
+        .op-brand span { display: block; color: var(--muted); font-size: 0.82rem; font-weight: 650; }
+        .op-head-right { text-align: right; color: var(--muted); font-size: 0.8rem; font-weight: 650; }
+        .op-head-right strong { display: block; color: var(--ink); font-size: 0.9rem; }
+
+        h2 {
+            margin: 18px 0 8px;
+            font-size: 0.78rem;
+            font-weight: 850;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--blue);
+        }
+
+        .op-lede { margin-top: 14px; font-size: 1.02rem; font-weight: 650; letter-spacing: -0.01em; }
+
+        .thesis-bullets { list-style: none; display: grid; gap: 7px; }
+        .thesis-bullets li { display: flex; gap: 9px; font-size: 0.88rem; color: var(--muted); }
+        .thesis-bullets li::before { content: ""; flex: 0 0 auto; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--teal)); }
+        .thesis-bullets strong { color: var(--ink); }
+
+        .op-cols { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 26px; align-items: start; }
+
+        .mini-diagram { list-style: none; display: grid; gap: 6px; }
+        .mini-tier {
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--tier, var(--blue));
+            border-radius: 9px;
+            padding: 9px 12px;
+        }
+        .mini-tier strong { display: block; font-size: 0.85rem; }
+        .mini-tier span { display: block; color: var(--muted); font-size: 0.76rem; }
+        .mini-arrow { text-align: center; color: var(--muted); font-size: 0.72rem; font-weight: 700; line-height: 1.1; }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 10px 8px;
+            margin-top: 4px;
+        }
+        .apps-grid figure { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+        .apps-grid img { width: 40px; height: 40px; border-radius: 24%; box-shadow: 0 4px 10px -4px rgba(15, 23, 42, 0.35); }
+        .apps-grid figcaption { font-size: 0.62rem; font-weight: 700; color: var(--muted); line-height: 1.15; }
+
+        .roadmap-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .roadmap-cell { border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; }
+        .roadmap-cell em { display: inline-block; font-style: normal; font-size: 0.66rem; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+        .roadmap-cell strong { display: block; margin-top: 2px; font-size: 0.84rem; }
+        .roadmap-cell span { display: block; color: var(--muted); font-size: 0.73rem; }
+        .status { float: right; font-size: 0.62rem; font-weight: 850; border-radius: 999px; padding: 1px 7px; }
+        .status.shipped { color: #15803d; background: #ecfdf5; }
+        .status.progress { color: var(--blue); background: #eff6ff; }
+        .status.planned { color: var(--violet); background: #f5f3ff; }
+
+        footer.op-foot {
+            margin-top: 18px;
+            padding-top: 12px;
+            border-top: 2px solid var(--ink);
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .op-contact { font-size: 0.82rem; font-weight: 700; }
+        .op-contact a { color: var(--ink); text-decoration: none; }
+        .op-contact span { color: var(--muted); font-weight: 600; }
+        .op-source { color: var(--muted); font-size: 0.68rem; max-width: 3.4in; }
+
+        @media (max-width: 700px) {
+            .sheet { margin: 12px; padding: 22px 18px; }
+            .op-cols { grid-template-columns: 1fr; }
+            .apps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .roadmap-row { grid-template-columns: 1fr; }
+            header.op-head { flex-direction: column; align-items: flex-start; }
+            .op-head-right { text-align: left; }
+        }
+
+        @page { size: Letter; margin: 0.4in; }
+
+        @media print {
+            html, body { background: #ffffff; }
+            .print-bar { display: none; }
+            .sheet {
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            a { text-decoration: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-bar">
+        <a href="index.html">&larr; Back to weiproduct.com</a>
+        <button class="print-btn" type="button" onclick="window.print()">Download as PDF (print)</button>
+    </div>
+
+    <div class="sheet">
+        <header class="op-head">
+            <div class="op-brand">
+                <img src="assets/brand/favicon.svg" alt="WeiProduct logo">
+                <div>
+                    <strong>WeiProduct</strong>
+                    <span>Multi-agent AI comprehensive system</span>
+                </div>
+            </div>
+            <div class="op-head-right">
+                <strong>weiproduct.com</strong>
+                founder@weiproduct.com<br>
+                +1 (413) 588-8637 · SF Bay Area, CA
+            </div>
+        </header>
+
+        <p class="op-lede">Building personal AI that understands the whole person: 17 focused iOS apps working as specialized agents that feed one shared personal context layer.</p>
+
+        <h2>Investment thesis</h2>
+        <ul class="thesis-bullets">
+            <li><span><strong>Multi-agent context engine.</strong> Focused apps act as specialized agents that capture different life signals while sharing design, support, and system infrastructure.</span></li>
+            <li><span><strong>Fast learning loop.</strong> Launch narrow agents into real daily workflows, learn from usage, and double down on what people return to.</span></li>
+            <li><span><strong>Whole-person decision layer.</strong> Connected signals across productivity, finance, learning, wellness, and utility become one decision layer — built by a CS + economics founder.</span></li>
+        </ul>
+
+        <div class="op-cols">
+            <div>
+                <h2>The system today — 17 agents live on the App Store</h2>
+                <div class="apps-grid">
+                    <figure><img src="assets/icons/piggyfinance.png" alt=""><figcaption>Piggy Accounting</figcaption></figure>
+                    <figure><img src="assets/icons/ai-calendar.png" alt=""><figcaption>AI Calendar</figcaption></figure>
+                    <figure><img src="assets/icons/weirabits.png" alt=""><figcaption>Habits</figcaption></figure>
+                    <figure><img src="assets/icons/weatherspro.png" alt=""><figcaption>AI Weather</figcaption></figure>
+                    <figure><img src="assets/icons/ai-tomato-clock.png" alt=""><figcaption>AI Pomodoro</figcaption></figure>
+                    <figure><img src="assets/icons/ai-vocabulary.png" alt=""><figcaption>AI Vocabulary</figcaption></figure>
+                    <figure><img src="assets/icons/ai-calories.png" alt=""><figcaption>Food Calories</figcaption></figure>
+                    <figure><img src="assets/icons/ai-helper.png" alt=""><figcaption>Dating Chat</figcaption></figure>
+                    <figure><img src="assets/icons/ai-platform.png" alt=""><figcaption>AI Platform</figcaption></figure>
+                    <figure><img src="assets/icons/smart-light-master.png" alt=""><figcaption>AI Smart Light</figcaption></figure>
+                    <figure><img src="assets/icons/ai-meditation.png" alt=""><figcaption>Meditation</figcaption></figure>
+                    <figure><img src="assets/icons/dailymatters.png" alt=""><figcaption>Dailymatters</figcaption></figure>
+                    <figure><img src="assets/icons/aidailymatters.png" alt=""><figcaption>AI Daily Matters</figcaption></figure>
+                    <figure><img src="assets/icons/aimbti.png" alt=""><figcaption>AIMBTI</figcaption></figure>
+                    <figure><img src="assets/icons/aidrinkwater.png" alt=""><figcaption>AI Drink Water</figcaption></figure>
+                    <figure><img src="assets/icons/ainote.png" alt=""><figcaption>AI Note</figcaption></figure>
+                    <figure><img src="assets/icons/ai-voice-notes.png" alt=""><figcaption>AI Voice Notes</figcaption></figure>
+                </div>
+            </div>
+            <div>
+                <h2>How it's built</h2>
+                <ul class="mini-diagram">
+                    <li class="mini-tier" style="--tier:#2563eb"><strong>SwiftUI clients — 17 focused iOS apps</strong><span>On-device data first · one shared design system</span></li>
+                    <li class="mini-arrow" aria-hidden="true">&darr; HTTPS — requests only, never credentials</li>
+                    <li class="mini-tier" style="--tier:#0f766e"><strong>Hardened serverless proxies — one per app</strong><span>API keys held server-side, never shipped in binaries</span></li>
+                    <li class="mini-arrow" aria-hidden="true">&darr; scoped model calls</li>
+                    <li class="mini-tier" style="--tier:#7c3aed"><strong>Model layer</strong><span>OpenAI · Whisper · Gemini — swappable per agent</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Roadmap</h2>
+        <div class="roadmap-row">
+            <div class="roadmap-cell">
+                <span class="status shipped">Shipped</span>
+                <em>Phase 1</em>
+                <strong>Focused agents</strong>
+                <span>17 specialized apps live, each owning one recurring life workflow.</span>
+            </div>
+            <div class="roadmap-cell">
+                <span class="status progress">In progress</span>
+                <em>Phase 2</em>
+                <strong>Cross-agent context</strong>
+                <span>Connect the strongest signals into one shared personal context layer.</span>
+            </div>
+            <div class="roadmap-cell">
+                <span class="status planned">Planned</span>
+                <em>Phase 3</em>
+                <strong>Unified decision layer</strong>
+                <span>One personal decision layer that helps the whole person plan and act.</span>
+            </div>
+        </div>
+
+        <footer class="op-foot">
+            <div class="op-contact">
+                <a href="mailto:founder@weiproduct.com">founder@weiproduct.com</a> · <a href="https://weiproduct.com/">weiproduct.com</a><br>
+                <span>github.com/WeiProduct · linkedin.com/in/wei-fu-004724256 · Wei Fu, founder (UMass Amherst — BS Computer Science, BS Managerial Economics)</span>
+            </div>
+            <p class="op-source">All 17 apps first released Jul 9 – Aug 6, 2025 per Apple's iTunes Lookup API (snapshot fetched Jul 16, 2026 — data/appstore.json).</p>
+        </footer>
+    </div>
+</body>
+</html>
