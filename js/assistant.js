@@ -46,7 +46,7 @@
         'How it is built: SwiftUI + SwiftData clients; hardened per-app Vercel serverless proxies (origin/model allow-lists, server-side key management); OpenAI, Whisper, Claude, Gemini integrations; XCTest/XCUITest suites in multiple apps; App Store Connect API release automation; products bilingual EN/中文.',
         'Founder: Wei Fu — mobile/iOS software engineer, founder of WeiProduct, San Francisco Bay Area, bilingual English/Chinese, open to iOS/AI/SWE roles; F-1 OPT, seeking H-1B sponsorship.',
         'Education: UMass Amherst, dual B.S. Computer Science + Managerial Economics (May 2025), GPA 3.63/4.00, Dean\'s List 5 semesters, 4-year merit scholarship; A/A- coursework: Artificial Intelligence, Machine Learning, Operating Systems, Computer Networks, Software Entrepreneurship, Data Management, Money & Banking, Fundamentals of Finance, Managerial Economics.',
-        'Contact: founder@weiproduct.com (company/investors); weifu@umass.edu (personal/recruiting). Links: weiproduct.com; weiproduct.github.io/ME; github.com/WeiProduct; linkedin.com/in/wei-fu-004724256.',
+        'Contact: founder@weiproduct.com (company/investors); weifu@umass.edu (personal/recruiting). Links: weiproduct.com; weifuandy.com; github.com/WeiProduct; linkedin.com/in/wei-fu-004724256.',
         '',
         'STYLE: markdown-lite only — short paragraphs, "-" bullet lists, **bold**, [text](https://...) links. When mentioning an app you may link its App Store page. No tables, images, or code blocks.'
     ].join('\n');
