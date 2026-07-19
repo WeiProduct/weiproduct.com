@@ -151,5 +151,13 @@
     "description": "Voice capture for meetings, study, quick thoughts, and personal notes.",
     "url": "https://weiproduct.github.io/recording/",
     "appStoreUrl": "https://apps.apple.com/app/id6748947046"
+  },
+  {
+    "name": "ilink",
+    "category": "Family",
+    "group": "lifestyle",
+    "icon": "assets/icons/ilink.png",
+    "description": "Voice-first family updates condensed by AI into one or two sentences, helping relatives—especially older parents—stay close.",
+    "url": "https://weifuandy.com/#ilink"
   }
 ]

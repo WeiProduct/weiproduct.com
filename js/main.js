@@ -755,7 +755,8 @@ if ('IntersectionObserver' in window) {
         { name: 'AI Platform', cluster: 'utility' },
         { name: 'AI Smart Light', cluster: 'utility' },
         { name: 'Dating Chat', cluster: 'utility' },
-        { name: 'AIMBTI', cluster: 'utility' }
+        { name: 'AIMBTI', cluster: 'utility' },
+        { name: 'ilink', cluster: 'utility' }
     ];
 
     const esc = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -843,7 +844,7 @@ if ('IntersectionObserver' in window) {
         + `<text class="cl-hub-title" x="${cx}" y="${cy - 22}" text-anchor="middle">Personal</text>`
         + `<text class="cl-hub-title" x="${cx}" y="${cy + 4}" text-anchor="middle">context</text>`
         + `<text class="cl-hub-title" x="${cx}" y="${cy + 30}" text-anchor="middle">layer</text>`
-        + `<text class="cl-hub-sub" x="${cx}" y="${cy + 54}" text-anchor="middle">17 agents · 5 domains</text>`
+        + `<text class="cl-hub-sub" x="${cx}" y="${cy + 54}" text-anchor="middle">18 agents · 5 domains</text>`
         + `</g>`;
 
     const defs = `<defs>`
@@ -853,7 +854,7 @@ if ('IntersectionObserver' in window) {
         + clipsSvg
         + `</defs>`;
 
-    mount.innerHTML = `<svg class="cl-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="17 specialized agents across five domains feeding one central personal context layer" xmlns="http://www.w3.org/2000/svg">`
+    mount.innerHTML = `<svg class="cl-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="18 specialized agents across five domains feeding one central personal context layer" xmlns="http://www.w3.org/2000/svg">`
         + defs + linesSvg + hubSvg + nodesSvg + labelsSvg
         + `</svg>`;
 })();

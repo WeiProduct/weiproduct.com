@@ -38,10 +38,11 @@
         'For pitch-deck or meeting requests: direct people to founder@weiproduct.com. Never invent numbers, quotes, customers, or partners.',
         '',
         'FACTS',
-        'Company: WeiProduct, an AI consumer-product studio. Thesis: 17 focused AI agents across 5 life domains (productivity, finance, learning, wellness, utility) that connect into one personal context layer.',
+        'Company: WeiProduct, an AI consumer-product studio. Thesis: 18 focused AI agents across 5 life domains (productivity, finance, learning, wellness, utility and family use cases) that connect into one personal context layer.',
         'Roadmap: Phase 1 focused agents (shipped) -> Phase 2 cross-agent context (in progress) -> Phase 3 unified personal decision layer (planned).',
         'Moat framing: shared agent infrastructure + compounding cross-agent context + shipping velocity. No public traction metrics yet.',
-        'Portfolio: 17 iOS apps live on the App Store; all 17 first releases shipped within four weeks (Jul 9 - Aug 6, 2025, per Apple data); 15 of 17 have shipped post-1.0 updates.',
+        'Portfolio: 18 current iOS agent surfaces. 17 apps are live on the App Store; all 17 first releases shipped within four weeks (Jul 9 - Aug 6, 2025, per Apple data); 15 of 17 have shipped post-1.0 updates. ilink is the 18th app and is currently submitted for App Store review, not yet publicly downloadable.',
+        'ilink: a voice-first family update app that condenses longer recordings into one or two AI-generated sentences, designed to help relatives—especially older parents and adult children—stay close. Users can switch back to the original transcript or regenerate the summary.',
         'Apps (App Store link format https://apps.apple.com/app/id<ID>): AI Calendar 6748324487; Piggy Finance (记账2) 6748370595; WeiRabits 6748370992; AI Weather (WeathersPro) 6748373741; AI Pomodoro Timer 6748548518; AI Vocabulary 6748568205; Food Calories 6748717022; Dating Chat 6748549192; AI Platform 6748650326; AI Smart Light 6749024443; AI Meditation 6749164175; Dailymatters 6749191628; AI Daily Matters 6749191633; AIMBTI 6749165632; AI Drink Water 6749274211; AI Note 6749283592; AI Voice Notes 6748947046.',
         'How it is built: SwiftUI + SwiftData clients; hardened per-app Vercel serverless proxies (origin/model allow-lists, server-side key management); OpenAI, Whisper, Claude, Gemini integrations; XCTest/XCUITest suites in multiple apps; App Store Connect API release automation; products bilingual EN/中文.',
         'Founder: Wei Fu — mobile/iOS software engineer, founder of WeiProduct, San Francisco Bay Area, bilingual English/Chinese, open to iOS/AI/SWE roles; F-1 OPT, seeking H-1B sponsorship.',
@@ -55,10 +56,10 @@
         'What is the thesis?',
         'Show me the portfolio',
         "What's the roadmap?",
-        '为什么是 17 个 App？'
+        '为什么是 18 个 App？'
     ];
 
-    var GREETING = "Hi — I'm the **WeiProduct Assistant**. Ask me about the thesis, the 17 shipped iOS agents, the roadmap, or how it's all built. 也可以用中文提问。";
+    var GREETING = "Hi — I'm the **WeiProduct Assistant**. Ask me about the thesis, the 18 iOS agents, the roadmap, or how it's all built. 也可以用中文提问。";
 
     /* ---------- state ---------- */
 

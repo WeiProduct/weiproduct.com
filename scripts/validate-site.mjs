@@ -81,7 +81,7 @@ if (!indexHtml.includes('assets/brand/social-card.png')) {
     fail('Social card metadata must point to assets/brand/social-card.png');
 }
 
-if (/font-awesome|cdnjs\.cloudflare\.com|class="fa/.test(indexHtml)) {
+if (/font-awesome|cdnjs\.cloudflare\.com|class="fa(?:\s|[brsld](?:\s|")|-)/.test(indexHtml)) {
     fail('index.html should not depend on Font Awesome CDN');
 }
 
