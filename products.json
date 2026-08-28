@@ -158,6 +158,7 @@
     "group": "lifestyle",
     "icon": "assets/icons/ilink.png",
     "description": "Voice-first family updates condensed by AI into one or two sentences, helping relatives—especially older parents—stay close.",
-    "url": "https://weiproduct.github.io/ilink-app-prototype/"
+    "url": "https://weiproduct.github.io/ilink-app-prototype/",
+    "appStoreUrl": "https://apps.apple.com/app/id6792455240"
   }
 ]

@@ -68,7 +68,7 @@
         const last = new Date(releases[releases.length - 1]);
         const sameYear = first.getFullYear() === last.getFullYear();
         const range = `${sameYear ? monthDay.format(first) : monthDayYear.format(first)} – ${monthDayYear.format(last)}`;
-        mount.textContent = `All ${apps.length} first releases shipped ${range} (Apple App Store data).`;
+        mount.textContent = `${apps.length} live apps · Apple release span ${range} (App Store data).`;
     })();
 
     /* ---------- 1b. "Recent ships" strip (real Apple versions/dates) ---------- */
